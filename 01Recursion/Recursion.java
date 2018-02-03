@@ -41,9 +41,10 @@ public class Recursion{
 		
 
     public static void main(String[] args){
-	System.out.println(fact(0));
-	System.out.println(fact(3));
-  	System.out.println(fact(5));
+	System.out.println(fib(0));
+	System.out.println(fib(3));
+  	System.out.println(fib(5));
+	System.out.println(fib(40));
 	System.out.println(fact(-1));
     }
 }
