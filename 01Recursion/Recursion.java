@@ -41,11 +41,31 @@ public class Recursion{
 
     public static double percentError(double measured, double accepted){
 	return ((measured - accepted)/accepted);
-    }   
+    }
+
+    public static double sqrt(double n){
+	if(n < 0){
+	    throw new IllegalArgumentException("n < 0");
+	}
+	else{
+	    return sqrtHelper(n , 1);
+	}
+    }
+
+    public static double sqrtHelper(double n, double guess){
+	if (percentError(guess * guess, n) < 0.000001){
+		return guess;
+	}
+	else{
+	    return (n/guess + guess)/2;
+	}
+    }
+		    
 		
 
     public static void main(String[] args){
-	System.out.println(percentError(5,4));
-	System.out.println(percentError(4,4));
+	System.out.println(sqrt(100));
+	System.out.println(sqrt(1));
+	System.out.println(sqrt(-1));
     }
 }
