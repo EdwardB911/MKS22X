@@ -40,7 +40,7 @@ public class Recursion{
     }
 
     public static double percentError(double measured, double accepted){
-	return ((measured - accepted)/accepted);
+	return (Math.abs((measured - accepted)/accepted));
     }
 
     public static double sqrt(double n){
@@ -53,11 +53,12 @@ public class Recursion{
     }
 
     public static double sqrtHelper(double n, double guess){
-	if (percentError(guess * guess, n) < 0.000001){
+	if (percentError(guess * guess, n) < 0.00000000001){
 		return guess;
 	}
 	else{
-	    return (n/guess + guess)/2;
+	    guess = (n/guess + guess)/2;
+	    return sqrtHelper(n, guess);
 	}
     }
 		    
@@ -66,6 +67,6 @@ public class Recursion{
     public static void main(String[] args){
 	System.out.println(sqrt(100));
 	System.out.println(sqrt(1));
-	System.out.println(sqrt(-1));
+	System.out.println(sqrt(2));
     }
 }
