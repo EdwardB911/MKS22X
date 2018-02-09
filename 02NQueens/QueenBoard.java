@@ -11,6 +11,21 @@ public class QueenBoard{
 	}
     }
 
+    public String toString(){
+	String str = ""
+	for(int row = 0; row < board.length; row ++){
+	    for(int col = 0; col < board.length; col++){
+		if(board[row][col] == -1){
+		    str = str + "Q";
+		}
+		else{
+		    str = str + "_";
+		}
+	    }
+	    str = str + "\n";
+	}
+    }
+
     
 
 }
