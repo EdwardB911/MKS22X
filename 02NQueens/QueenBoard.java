@@ -12,7 +12,7 @@ public class QueenBoard{
     }
 
     public String toString(){
-	String str = ""
+	String str = "";
 	for(int row = 0; row < board.length; row ++){
 	    for(int col = 0; col < board.length; col++){
 		if(board[row][col] == -1){
@@ -24,8 +24,12 @@ public class QueenBoard{
 	    }
 	    str = str + "\n";
 	}
+	return str;
     }
 
-    
+    public static void main(String[] args){
+	QueenBoard a = new QueenBoard(4);
+	System.out.println(a.toString());
+    }
 
 }
