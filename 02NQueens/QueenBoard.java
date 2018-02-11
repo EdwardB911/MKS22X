@@ -62,12 +62,32 @@ public class QueenBoard{
 	    return true;
 	}
     }
+
+    private boolean removeQueen(int row, int col){
+	if(board[row][col] == -1){
+	    board[row][col] = 0;
+	    for(int x = 1; (col + x < board.length); x++){
+		board[row][col + x] -= 1;
+	    }
+	    for(int x = 1; (row - x > -1) && (col + x < board.length); x++){
+	    	board[row - x][col + x] -= 1;
+	    }
+	    for(int x = 1; (row + x < board.length) && (col + x < board.length); x++){
+	    	board[row + x][col + x] -= 1;
+	    }
+	    return true;
+	}
+	else{
+	    return false;
+	}
+    }
 		
 		
 
     public static void main(String[] args){
 	QueenBoard a = new QueenBoard(4);
 	a.addQueen(0,0);
+	a.removeQueen(0,0);
 	System.out.println(a.display());
 	System.out.println(a.toString());
     }
