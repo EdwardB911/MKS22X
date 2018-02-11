@@ -81,13 +81,50 @@ public class QueenBoard{
 	    return false;
 	}
     }
+
+    public boolean solve(){
+	for(int row = 0; row < board.length; row++){
+	    for(int col = 0; col < board.length; col++){
+		if(board[row][col] != 0){
+		    throw new IllegalStateException();
+		}
+	    }
+	}
+	return solveHelp(0,0,0);
+    }
+
+    public boolean solveHelp(int row, int col, int queens){
+	if (queens == board.length){
+	    return true;
+	}
+	else if(col < 0){
+	    return false;
+	}
+	else if(row >= board.length){
+	    int y = 0;
+	    for(int x = 0; x < board.length; x++){
+		if(board[x][col - 1] == -1){
+		    y = x;
+		}
+	    }
+	    removeQueen(y, col - 1);
+	    return solveHelp(y + 1, col - 1, queens - 1);
+	}
+	else if(board[row][col] == 0){
+	    addQueen(row,col);
+	    return solveHelp(0, col + 1, queens + 1);
+	}
+	else{
+	    return solveHelp(row + 1, col, queens);
+	}
+    }
+		
 		
 		
 
     public static void main(String[] args){
-	QueenBoard a = new QueenBoard(4);
-	a.addQueen(0,0);
-	a.removeQueen(0,0);
+	QueenBoard a = new QueenBoard(8);
+	a.solve();
 	System.out.println(a.display());
 	System.out.println(a.toString());
     }
