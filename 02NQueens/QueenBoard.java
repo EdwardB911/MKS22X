@@ -35,7 +35,7 @@ public class QueenBoard{
 		    str = str + "Q ";
 		}
 		else{
-		    str = str + data[row][col] + " ";
+		    str = str + board[row][col] + " ";
 		}
 	    }
 	    str = str + "\n";
@@ -49,15 +49,15 @@ public class QueenBoard{
 	    return false;
 	}
 	else{
-	    data[row][col] == -1;
-	    for(int x = 1; (col + x == data.length); x++){
-		data[row][col + x] = data[row][col + x] + 1;
+	    board[row][col] = -1;
+	    for(int x = 1; (col + x < board.length); x++){
+		board[row][col + x] += 1;
 	    }
-	    for(int x = 1; (row - x == -1) || (col + x == data.length); x++){
-		data[row - x][col + x] = data[row - x][col + x] + 1;
+	    for(int x = 1; (row - x > -1) && (col + x < board.length); x++){
+	    	board[row - x][col + x] += 1;
 	    }
-	    for(int x = 1; (row + x == data.length) || (col + x == data.length); x++){
-		data[row + x][col + x] = data[row + x][col + x] + 1;
+	    for(int x = 1; (row + x < board.length) && (col + x < board.length); x++){
+	    	board[row + x][col + x] += 1;
 	    }
 	    return true;
 	}
@@ -67,6 +67,8 @@ public class QueenBoard{
 
     public static void main(String[] args){
 	QueenBoard a = new QueenBoard(4);
+	a.addQueen(0,0);
+	System.out.println(a.display());
 	System.out.println(a.toString());
     }
 
