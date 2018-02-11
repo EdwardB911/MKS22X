@@ -13,7 +13,7 @@ public class QueenBoard{
 
     public String toString(){
 	String str = "";
-	for(int row = 0; row < board.length; row ++){
+	for(int row = 0; row < board.length; row++){
 	    for(int col = 0; col < board.length; col++){
 		if(board[row][col] == -1){
 		    str = str + "Q ";
@@ -27,7 +27,24 @@ public class QueenBoard{
 	return str;
     }
 
-    private boolean addQueen(int r, int c){
+    public String display(){
+	String str = "";
+	for(int row = 0; row < board.length; row++){
+	    for(int col = 0; col < board.length; col++){
+		if(board[row][col] == -1){
+		    str = str + "Q ";
+		}
+		else{
+		    str = str + data[row][col] + " ";
+		}
+	    }
+	    str = str + "\n";
+	}
+	return str;
+    }
+
+    
+    private boolean addQueen(int row, int col){
 	if(board[row][col] != 0){
 	    return false;
 	}
