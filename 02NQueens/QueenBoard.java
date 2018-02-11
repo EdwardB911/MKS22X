@@ -169,7 +169,7 @@ public class QueenBoard{
 		
 
     public static void main(String[] args){
-	QueenBoard a = new QueenBoard(7);
+	QueenBoard a = new QueenBoard(5);
 	System.out.println(a.countSolutions());
 	System.out.println(a.toString());
     }
