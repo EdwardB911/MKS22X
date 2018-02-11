@@ -97,18 +97,20 @@ public class QueenBoard{
 	if (queens == board.length){
 	    return true;
 	}
-	else if(col < 0){
-	    return false;
-	}
 	else if(row >= board.length){
-	    int y = 0;
-	    for(int x = 0; x < board.length; x++){
-		if(board[x][col - 1] == -1){
-		    y = x;
-		}
+	    if (col == 0){
+		return false;
 	    }
-	    removeQueen(y, col - 1);
-	    return solveHelp(y + 1, col - 1, queens - 1);
+	    else{
+		int y = 0;
+		for(int x = 0; x < board.length; x++){
+		    if(board[x][col - 1] == -1){
+			y = x;
+		    }
+		}
+		removeQueen(y, col - 1);
+		return solveHelp(y + 1, col - 1, queens - 1);
+	    }
 	}
 	else if(board[row][col] == 0){
 	    addQueen(row,col);
@@ -118,14 +120,57 @@ public class QueenBoard{
 	    return solveHelp(row + 1, col, queens);
 	}
     }
+
+    public int countSolutions(){
+	for(int row = 0; row < board.length; row++){
+	    for(int col = 0; col < board.length; col++){
+		if(board[row][col] != 0){
+		    throw new IllegalStateException();
+		}
+	    }
+	}
+	return countSolutionsHelp(0,0,0,0);
+    }
 		
-		
+    public int countSolutionsHelp(int row, int col, int queens, int solutions){
+	if (queens == board.length){
+	    int y = 0;
+	    for(int x = 0; x < board.length; x++){
+		if(board[x][col - 1] == -1){
+		    y = x;
+		}
+	    }
+	    removeQueen(y, col - 1);
+	    return countSolutionsHelp(y + 1, col - 1, queens - 1, solutions + 1);
+	}
+	else if(row >= board.length){
+	    if(col == 0){
+		return solutions;
+	    }
+	    else{
+		int y = 0;
+		for(int x = 0; x < board.length; x++){
+		    if(board[x][col - 1] == -1){
+			y = x;
+		    }
+		}
+		removeQueen(y, col - 1);
+		return countSolutionsHelp(y + 1, col - 1, queens - 1, solutions);
+	    }
+	}
+	else if(board[row][col] == 0){
+	    addQueen(row,col);
+	    return countSolutionsHelp(0, col + 1, queens + 1, solutions);
+	}
+	else{
+	    return countSolutionsHelp(row + 1, col, queens, solutions);
+	}
+    }		
 		
 
     public static void main(String[] args){
-	QueenBoard a = new QueenBoard(8);
-	a.solve();
-	System.out.println(a.display());
+	QueenBoard a = new QueenBoard(7);
+	System.out.println(a.countSolutions());
 	System.out.println(a.toString());
     }
 
