@@ -9,6 +9,7 @@ public class KnightBoard{
 	else{
 	    board = new int[startingRows][startingCols];
 	}
+    }
 		
 
     
