@@ -1,6 +1,7 @@
 public class KnightBoard{
 
     public int[][] board;
+    public int[][] cycle;
 
     public KnightBoard(int startingRows,int startingCols){
 	if (startingRows < 0 || startingCols < 0){
@@ -9,6 +10,14 @@ public class KnightBoard{
 	else{
 	    board = new int[startingRows][startingCols];
 	}
+	cycle = {{1,2},
+		 {2,1},
+		 {-1,2},
+		 {-2,1},
+		 {-2,-1},
+		 {-1,-2},
+		 {1,-2},
+		 {-1,2}};
     }
 
     public String toString(){
@@ -25,6 +34,16 @@ public class KnightBoard{
 	    str = str + "\n"
 	}
     }
+
+    public boolean solve(int startingRow, int startingCol){
+	return true;
+    }
+
+    public static void main(String[] args){
+	brd = new KnightBoard(5, 5);
+	System.out.println(brd.toString());
+    }	
+	 
 		
 		
 		
