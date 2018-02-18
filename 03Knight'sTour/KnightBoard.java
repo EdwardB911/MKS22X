@@ -37,6 +37,17 @@ public class KnightBoard{
     }
 
     public boolean solve(int startingRow, int startingCol){
+	for(int x = 0; x < board.length; x++){
+	    for(int y = 0; y < board[0].length; y++){
+		if(board[x][y] != 0){
+		    throw new IllegalStateException();
+		}
+	    }
+	}
+	if(startingRow >= board.length || startingCol >= board.length ||
+	   startingRow < 0 || startingCol < 0){
+	    throw new IllegalArgumentException();
+	}
 	return solveH(startingRow, startingCol, 1, 0);
     }
 
