@@ -17,7 +17,7 @@ public class KnightBoard{
 			     {-2,-1},
 			     {-1,-2},
 			     {1,-2},
-			     {-1,2}};
+			     {2,-1}};
     }
 
     public String toString(){
@@ -60,9 +60,10 @@ public class KnightBoard{
 		return true;
 	    }
 	    if(level == 0){
-		return false;
+	    	return false;
 	    }
 	    else{
+		board[startingRow][startingCol] = 0;
 		int row = 0;
 		int col = 0;
 		for(int x = 0; x < board.length; x++){
@@ -73,14 +74,18 @@ public class KnightBoard{
 			}
 		    }
 		}
-		board[startingRow][startingCol] = 0;
-		int oldChoice = 0;
+		int oldChoice = -2;
 		for(int c = 0; c < 8; c++){
-		    if(row - startingRow == cycle[c][0] && col - startingCol == cycle[c][1]){
+		    if(startingRow - row == cycle[c][0] && startingCol - col == cycle[c][1]){
 			oldChoice = c;
 		    }
 		}
-		return solveH(row, col, level - 1, choice + 1);		    
+		try{
+		return solveH(row, col, level - 1, oldChoice + 1);
+		}
+		catch(IndexOutOfBoundsException ex){
+		    return false;
+		}		    
 	    }
 	}
 	board[startingRow][startingCol] = level;
@@ -100,7 +105,8 @@ public class KnightBoard{
 
     public static void main(String[] args){
 	KnightBoard brd = new KnightBoard(5, 5);
-	brd.solve(0,0);
+	// System.out.println(brd.solve(0,0));
+	System.out.println(brd.toString());
     }	
 	 
 		
