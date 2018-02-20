@@ -44,7 +44,7 @@ public class KnightBoard{
 		}
 	    }
 	}
-	if(startingRow >= board.length || startingCol >= board.length ||
+	if(startingRow >= board.length || startingCol >= board[0].length ||
 	   startingRow < 0 || startingCol < 0){
 	    throw new IllegalArgumentException();
 	}
@@ -56,7 +56,7 @@ public class KnightBoard{
 	System.out.println(this);
 	Text.wait(100); //adjust this delay
 	if (choice > 7){
-	    if (level > board.length * board[0].length){
+	    if (level >= board.length * board[0].length){
 		return true;
 	    }
 	    if(level == 0){
@@ -89,7 +89,7 @@ public class KnightBoard{
 	    }
 	}
 	board[startingRow][startingCol] = level;
-	if(startingRow + cycle[choice][0] >= board.length || startingCol + cycle[choice][1] >= board.length ||
+	if(startingRow + cycle[choice][0] >= board.length || startingCol + cycle[choice][1] >= board[0].length ||
 	   startingRow + cycle[choice][0] < 0 || startingCol + cycle[choice][1] < 0){
 	    return solveH(startingRow, startingCol, level, choice + 1);
 	}
@@ -104,8 +104,8 @@ public class KnightBoard{
 	
 
     public static void main(String[] args){
-	KnightBoard brd = new KnightBoard(5, 5);
-	// System.out.println(brd.solve(0,0));
+	KnightBoard brd = new KnightBoard(3, 4);
+	brd.solve(0,0);
 	System.out.println(brd.toString());
     }	
 	 
