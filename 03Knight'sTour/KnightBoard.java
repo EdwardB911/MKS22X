@@ -81,7 +81,7 @@ public class KnightBoard{
 		    }
 		}
 		try{
-		return solveH(row, col, level - 1, oldChoice + 1);
+		    return solveH(row, col, level - 1, oldChoice + 1);
 		}
 		catch(IndexOutOfBoundsException ex){
 		    return false;
@@ -100,12 +100,96 @@ public class KnightBoard{
 	    return solveH(startingRow, startingCol, level, choice + 1);
 	}
     }
+
+    public int countSolutions(int startingRow, int startingCol){
+	for(int x = 0; x < board.length; x++){
+	    for(int y = 0; y < board[0].length; y++){
+		if(board[x][y] != 0){
+		    throw new IllegalStateException();
+		}
+	    }
+	}
+	if(startingRow >= board.length || startingCol >= board[0].length ||
+	   startingRow < 0 || startingCol < 0){
+	    throw new IllegalArgumentException();
+	}
+	return countSolutionsH(startingRow, startingCol, 1, 0, 0);
+    }
+
+    public int countSolutionsH(int startingRow, int startingCol, int level, int choice, int solutions){
+	System.out.println(Text.go(1,1));
+	System.out.println(this);
+	Text.wait(100); //adjust this delay
+	if (choice > 7){
+	    if (level >= board.length * board[0].length){
+		board[startingRow][startingCol] = 0;
+		int row = 0;
+		int col = 0;
+		for(int x = 0; x < board.length; x++){
+		    for(int y = 0; y < board[0].length; y++){
+			if(board[x][y] == (level - 1)){
+			    row = x;
+			    col = y;
+			}
+		    }
+		}
+		int oldChoice = -2;
+		for(int c = 0; c < 8; c++){
+		    if(startingRow - row == cycle[c][0] && startingCol - col == cycle[c][1]){
+			oldChoice = c;
+		    }
+		}
+		return countSolutionsH(row, col, level - 1, oldChoice + 1, solutions + 1);
+	    }
+	    if(level == 0){
+	    	return solutions;
+	    }
+	    else{
+		board[startingRow][startingCol] = 0;
+		int row = 0;
+		int col = 0;
+		for(int x = 0; x < board.length; x++){
+		    for(int y = 0; y < board[0].length; y++){
+			if(board[x][y] == (level - 1)){
+			    row = x;
+			    col = y;
+			}
+		    }
+		}
+		int oldChoice = -2;
+		for(int c = 0; c < 8; c++){
+		    if(startingRow - row == cycle[c][0] && startingCol - col == cycle[c][1]){
+			oldChoice = c;
+		    }
+		}
+		try{
+		    return countSolutionsH(row, col, level - 1, oldChoice + 1, solutions);
+		}
+		catch(IndexOutOfBoundsException ex){
+		    return solutions;
+		}		    
+	    }
+	}
+	board[startingRow][startingCol] = level;
+	if(startingRow + cycle[choice][0] >= board.length || startingCol + cycle[choice][1] >= board[0].length ||
+	   startingRow + cycle[choice][0] < 0 || startingCol + cycle[choice][1] < 0){
+	    return countSolutionsH(startingRow, startingCol, level, choice + 1, solutions);
+	}
+	if(board[startingRow + cycle[choice][0]][startingCol + cycle[choice][1]] == 0){
+	    return countSolutionsH(startingRow + cycle[choice][0], startingCol + cycle[choice][1], level + 1, 0, solutions);
+	}
+	else{
+	    return countSolutionsH(startingRow, startingCol, level, choice + 1, solutions);
+	}
+    }
+
+    
 	
 	
 
     public static void main(String[] args){
 	KnightBoard brd = new KnightBoard(3, 4);
-	brd.solve(0,0);
+	System.out.println(brd.solve(0,0));
 	System.out.println(brd.toString());
     }	
 	 
