@@ -52,9 +52,9 @@ public class KnightBoard{
     }
 
     public boolean solveH(int startingRow, int startingCol, int level, int choice){
-	System.out.println(Text.go(1,1));
-	System.out.println(this);
-	Text.wait(100); //adjust this delay
+	// System.out.println(Text.go(1,1));
+	// System.out.println(this);
+	// Text.wait(100); //adjust this delay
 	if (choice > 7){
 	    if (level >= board.length * board[0].length){
 		return true;
@@ -117,9 +117,9 @@ public class KnightBoard{
     }
 
     public int countSolutionsH(int startingRow, int startingCol, int level, int choice, int solutions){
-	System.out.println(Text.go(1,1));
-	System.out.println(this);
-	Text.wait(100); //adjust this delay
+	// System.out.println(Text.go(1,1));
+	// System.out.println(this);
+	// Text.wait(100); //adjust this delay
 	if (choice > 7){
 	    if (level >= board.length * board[0].length){
 		board[startingRow][startingCol] = 0;
