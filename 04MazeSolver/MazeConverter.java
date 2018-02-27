@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -24,6 +25,6 @@ public class MazeConverter{
 	    }
 	    x = x + 1;
 	}
-	System.out.println(ary.toString());
+	System.out.println(Arrays.deepToString(ary));
     }	    
 }
