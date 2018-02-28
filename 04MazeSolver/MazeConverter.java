@@ -13,9 +13,9 @@ public class MazeConverter{
 	while(inf.hasNextLine()){
 	    String line = inf.nextLine();
 	    rows = rows + 1;
-	    cols = 0;
 	    for(int c = 0; c < line.length();c++){
-		cols = cols + 1;
+		cols = line.length();
+		System.out.println(line.length());
 	    }
 	    System.out.println(line);
 	}
