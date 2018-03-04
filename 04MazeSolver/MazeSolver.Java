@@ -48,6 +48,16 @@ public class MazeSolver{
         System.out.println("\033[2J\033[1;1H");
     }
 
+    public String toString(){
+	String str = "";
+	for(int x = 0; x < maze.length; x++){
+	    for(int y = 0; y < maze[0].length; y++){
+		str = str +  maze[x][y];
+	    }
+	    str = str + "\n";
+	}
+	return str;
+    }
 
-
+  
 }
