@@ -63,7 +63,14 @@ public class Maze{
 	maze = convert(filename);
 	setAnimate(false);
     }
-	
+
+    public static void main(String[] args){
+	try{
+	Maze m = new Maze(args[0]);
+	System.out.println(m.toString());
+	}
+	catch(FileNotFoundException f){}	
+    }
 
   
 }
