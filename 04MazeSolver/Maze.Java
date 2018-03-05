@@ -62,14 +62,31 @@ public class Maze{
     public Maze(String filename) throws FileNotFoundException{
 	maze = convert(filename);
 	setAnimate(false);
+	int S = 0;
+	int E = 0;
+	for(int x = 0; x < maze.length; x++){
+	    for(int y = 0; y < maze[0].length; y++){
+		if(maze[x][y] == 'S'){
+		    S = S + 1;
+		}
+		if(maze[x][y] == 'E'){
+		    E = E + 1;
+		}
+	    }
+	}
+	if(S != 1 || E != 1){
+	    throw new IllegalStateException();
+	}
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException{
 	try{
-	Maze m = new Maze(args[0]);
-	System.out.println(m.toString());
+	    Maze m = new Maze(args[0]);
+	    System.out.println(m.toString());
 	}
-	catch(FileNotFoundException f){}	
+	catch(ArrayIndexOutOfBoundsException f){
+	    System.out.println("There is no file");
+	}	
     }
 
   
