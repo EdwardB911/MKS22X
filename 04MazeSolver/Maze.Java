@@ -3,8 +3,9 @@ import java.io.*;
 
 public class Maze{
 
-    private char[][]maze;
+    private char[][] maze;
     private boolean animate;
+    private int[][] moves = {{0,1},{1,0},{-1,0},{0,-1}};
     
     public static char[][] convert(String name) throws FileNotFoundException {
 	File text = new File(name);
@@ -78,6 +79,50 @@ public class Maze{
 	    throw new IllegalStateException();
 	}
     }
+
+    public int solve(){
+	int row = -1;
+	int col = -1;
+	for(int x = 0; x < maze.length; x++){
+	    for(int y = 0; y < maze[0].length; y++){
+		if (maze[x][y] == 'S'){
+		    row = x;
+		    col = y;
+		}
+	    }
+	}
+	return solve(row, col);
+    }
+
+    public int solve(int row, int col){
+	if(animate){
+            clearTerminal();
+            System.out.println(this);
+            wait(20);
+        }
+
+	if(maze[row][col] == 'E'){
+	    return -1;
+	}
+	
+	maze[row][col] = '@';
+
+	for(int x = 0; x <= 4; x++){
+	    if(x == 4){
+		maze[row][col] = '.';
+		// backtrack here
+		return -1;
+	    }
+	    else if(maze[row + moves[x][0]][col + moves[x][1]] == ' '){
+		int y = x;
+		x = 5;
+		return solve(row + moves[y][0], col + moves[y][1]);
+	    }
+	}
+	return -1;
+    }			     
+	    
+
 
     public static void main(String[] args) throws FileNotFoundException{
 	try{
