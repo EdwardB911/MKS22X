@@ -102,7 +102,15 @@ public class Maze{
         }
 
 	if(maze[row][col] == 'E'){
-	    return -1;
+	   int count = 0;
+	   for(int x = 0; x < maze.length; x++){
+	       for(int y = 0; y < maze[0].length; y++){
+		   if(maze[x][y] == '@'){
+		       count = count + 1;
+		   }
+	       }
+	   }
+	   return count;
 	}
 	
 	maze[row][col] = '@';
@@ -110,10 +118,14 @@ public class Maze{
 	for(int x = 0; x <= 4; x++){
 	    if(x == 4){
 		maze[row][col] = '.';
-		// backtrack here
+		for(int y = 0; y < 4; y++){
+		    if(maze[row - moves[y][0]][col - moves[y][1]] == '@'){
+			return solve(row - moves[y][0], col - moves[y][1]);
+		    }
+		}
 		return -1;
 	    }
-	    else if(maze[row + moves[x][0]][col + moves[x][1]] == ' '){
+	    else if(maze[row + moves[x][0]][col + moves[x][1]] == ' ' || maze[row +moves[x][0]][col + moves[x][1]] == 'E'){
 		int y = x;
 		x = 5;
 		return solve(row + moves[y][0], col + moves[y][1]);
@@ -127,7 +139,7 @@ public class Maze{
     public static void main(String[] args) throws FileNotFoundException{
 	try{
 	    Maze m = new Maze(args[0]);
-	    System.out.println(m.toString());
+	    m.solve();
 	}
 	catch(ArrayIndexOutOfBoundsException f){
 	    System.out.println("There is no file");
