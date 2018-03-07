@@ -7,7 +7,7 @@ public class Driver{
 
         Maze f;
 
-        f = new Maze("data1.dat");//true animates the maze.
+        f = new Maze("noSolution.txt");//true animates the maze.
 	
         f.setAnimate(true);
 

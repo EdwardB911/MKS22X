@@ -10,7 +10,7 @@ public class Maze{
     public static char[][] convert(String name) throws FileNotFoundException {
 	File text = new File(name);
 	Scanner inf = new Scanner(text);
-	int rows = -1;
+	int rows = 0;
 	int cols = 0;
 	while(inf.hasNextLine()){
 	    String line = inf.nextLine();
@@ -139,7 +139,8 @@ public class Maze{
     public static void main(String[] args) throws FileNotFoundException{
 	try{
 	    Maze m = new Maze(args[0]);
-	    m.solve();
+	    System.out.println(m.solve());
+	    System.out.println(m.toString());
 	}
 	catch(ArrayIndexOutOfBoundsException f){
 	    System.out.println("There is no file");
