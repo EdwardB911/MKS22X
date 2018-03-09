@@ -32,6 +32,16 @@ public class USACO{
 	}
     }
 
+    public static int[] parameters(String str){
+	String[] ary = str.split(" ", 0);
+	int[] params = int[ary.length]
+	    for(int x = 0; x < ary.length; x++){
+		params[x] = Integer.parseInt(ary[x]);
+	    }
+	return params;
+    }
+	
+
 
 
     
