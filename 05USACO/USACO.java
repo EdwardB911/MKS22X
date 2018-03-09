@@ -25,7 +25,12 @@ public class USACO{
 		if(depth - maze[x][y] < 0){
 		    maze[x][y] = (depth - maze[x][y]);
 		}
-		else
+		else{
+		    maze[x][y] = 0;
+		}
+	    }
+	}
+    }
 
 
 
