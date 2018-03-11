@@ -78,7 +78,7 @@ public class USACO{
     }
 
     public static void main(String[] args) throws FileNotFoundException{
-	System.out.println(silver("makelake.in"));
+	System.out.println(silver("ctravel.in"));
     }
 
     public static int silver(String str) throws FileNotFoundException{
