@@ -25,7 +25,7 @@ public class USACO{
     public static int[][] depths(int[][] nums, int depth){
 	for(int x = 0; x < nums.length; x++){
 	    for(int y = 0; y < nums[0].length; y++){
-		if(depth - nums[x][y] < 0){
+		if(depth - nums[x][y] > 0){
 		    nums[x][y] = (depth - nums[x][y]);
 		}
 		else{
@@ -62,10 +62,10 @@ public class USACO{
 		plot[x][y] = temps[y];
 	    }
 	}
-	for(int x = 0; x < N; x++){
+       	for(int x = 0; x < N; x++){
 	    String line = inf.nextLine();
 	    int[] temps = parameters(line);
-	    plot = stomp(plot, temps[0], temps[1], temps[2]);
+	    plot = stomp(plot, temps[0] - 1, temps[1] - 1, temps[2]);
 	}
 	plot = depths(plot, E);
 	int sum = 0;
@@ -75,6 +75,10 @@ public class USACO{
 	    }
 	}
 	return (sum * 5184);
+    }
+
+    public static void main(String[] args) throws FileNotFoundException{
+	System.out.println(bronze("makelake.in"));
     }
 
 
