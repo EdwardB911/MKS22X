@@ -78,8 +78,69 @@ public class USACO{
     }
 
     public static void main(String[] args) throws FileNotFoundException{
-	System.out.println(bronze("makelake.in"));
+	System.out.println(silver("makelake.in"));
     }
+
+    public static int silver(String str) throws FileNotFoundException{
+	File text = new File(str);
+	Scanner inf = new Scanner(text);
+	String rules = inf.nextLine();
+	int[] params = parameters(rules);
+	int N = params[0];
+	int M = params[1];
+	int T = params[2];
+	char[][] plot = new char[N][M];
+	int[][] oldNums = new int[N][M];
+	int[][] newNums = new int[N][M];
+	for(int x = 0; x < N; x++){
+	    String line = inf.nextLine();
+	    for(int y = 0; y < M; y++){
+		plot[x][y] = line.charAt(y);
+	    }
+	}
+	rules = inf.nextLine();
+	int[] instructions = parameters(rules);
+	int R1 = instructions[0];
+	int C1 = instructions[1];
+	int R2 = instructions[2];
+	int C2 = instructions[3];
+	newNums[R1 - 1][C1 - 1] = 1;
+	for(int x = 0; x < T; x++){
+	    for(int row = 0; row < N; row++){
+		for(int col = 0; col < M; col++){
+		    oldNums[row][col] = newNums[row][col];
+		}
+	    }
+	    for(int row = 0; row < N; row++){
+		for(int col = 0; col < M; col++){
+		    if(plot[row][col] == '*'){
+			newNums[row][col] = 0;
+		    }
+		    else{
+			try{
+			    newNums[row][col] += oldNums[row + 1][col];
+			}
+			catch(IndexOutOfBoundsException e){}
+			try{
+			    newNums[row][col] += oldNums[row - 1][col];
+			}
+			catch(IndexOutOfBoundsException e){}
+			try{
+			    newNums[row][col] += oldNums[row][col + 1];
+			}
+			catch(IndexOutOfBoundsException e){}
+			try{
+			    newNums[row][col] += oldNums[row][col -1];
+			}
+			catch(IndexOutOfBoundsException e){}
+		    }
+		}
+	    }
+	}
+	return newNums[R2 -1][C2 -1];
+    }
+	    
+	
 
 
 
