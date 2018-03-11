@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class USACO{
 
     public static int[][] stomp(int[][] nums, int row, int col, int depth){
@@ -41,7 +44,38 @@ public class USACO{
 	    }
 	return params;
     }
-	
+
+    public static int bronze(String str) throws FileNotFoundException{
+	File text = new File(str);
+	Scanner inf = new Scanner(text);
+	String rules = inf.nextLine();
+	int[] params = parameters(rules);
+	int R = params[0];
+	int C = params[1];
+	int E = params[2];
+	int N = params[3];
+	int[][] plot = new int[R][C];
+	for(int x = 0; x < R; x++){
+	    String line = inf.nextLine();
+	    int[] temps = parameters(line);
+	    for(int y = 0; y < C; y++){
+		plot[x][y] = temps[y];
+	    }
+	}
+	for(int x = 0; x < N; x++){
+	    String line = inf.nextLine();
+	    int[] temps = parameters(line);
+	    plot = stomp(plot, temps[0], temps[1], temps[2]);
+	}
+	plot = depths(plot, E);
+	int sum = 0;
+	for(int x = 0; x < plot.length; x++){
+	    for(int y = 0; y < plot[0].length; y++){
+		sum = sum + plot[x][y];
+	    }
+	}
+	return (sum * 5184);
+    }
 
 
 
