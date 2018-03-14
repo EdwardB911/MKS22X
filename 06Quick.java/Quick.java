@@ -12,7 +12,7 @@ public class Quick{
     public static void part(int[] data, int start, int end){
 	Random rand = new Random();
 	int n = start + rand.nextInt(end - start);
-	System.out.println(data[n]);
+	// System.out.println(data[n]);
 	swap(data, start, n);
 	int small = start + 1;
 	int large = end;
