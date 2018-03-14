@@ -12,6 +12,7 @@ public class Quick{
     public static void part(int[] data, int start, int end){
 	Random rand = new Random();
 	int n = start + rand.nextInt(end - start);
+	System.out.println(data[n]);
 	swap(data, start, n);
 	int small = start + 1;
 	int large = end;
@@ -27,7 +28,7 @@ public class Quick{
 	swap(data, start, large);
     }
 
-    public static void main{
+    public static void main(String[] args){
 	int[] ary = {999,999,999,4,1,0,3,2,999,999,999};
 	part(ary, 0, 10);
 	System.out.println(Arrays.toString(ary));
