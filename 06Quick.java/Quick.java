@@ -9,10 +9,10 @@ public class Quick{
 	ary[b] = c;
     }
 
-    public static void part(int[] data, int start, int end){
+    public static int part(int[] data, int start, int end){
 	Random rand = new Random();
 	int n = start + rand.nextInt(end - start);
-	// System.out.println(data[n]);
+	int x = data[n];
 	swap(data, start, n);
 	int small = start + 1;
 	int large = end;
@@ -26,11 +26,17 @@ public class Quick{
 	    }
 	}
 	swap(data, start, large);
+	for(int y = 0; y < data.length; y++){
+	    if (data[y] == x){
+		return y;
+	    }
+	}
+	return -1;
     }
 
     public static void main(String[] args){
 	int[] ary = {999,999,999,4,1,0,3,2,999,999,999};
-	part(ary, 0, 10);
+	System.out.println(part(ary, 0, 10));
 	System.out.println(Arrays.toString(ary));
     }
 
