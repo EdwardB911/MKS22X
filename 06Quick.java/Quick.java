@@ -36,7 +36,7 @@ public class Quick{
 	    for(int x = 0; x < ary.length; x++){
 		ary[x] = data[n + x + 1];
 	    }
-	    return quickSelect(ary, k - n);
+	    return quickSelect(ary, k - n + 1);
 	}
 	else if(n > k){
 	    int[] ary = new int[n - 1];
@@ -56,8 +56,5 @@ public class Quick{
 	    System.out.println(quickSelect(ary, x));
 	}
     }
-
-
-
-
+    
 }
