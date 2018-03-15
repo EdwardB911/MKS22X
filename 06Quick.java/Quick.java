@@ -12,6 +12,9 @@ public class Quick{
     public static int part(int[] data, int start, int end){
 	Random rand = new Random();
 	int n = start + rand.nextInt(end - start);
+	if(end - start < 2){
+	    return n;
+	}
 	int x = data[n];
 	swap(data, start, n);
 	int small = start + 1;
