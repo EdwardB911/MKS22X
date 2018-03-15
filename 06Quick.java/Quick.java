@@ -26,18 +26,35 @@ public class Quick{
 	    }
 	}
 	swap(data, start, large);
-	for(int y = 0; y < data.length; y++){
-	    if (data[y] == x){
-		return y;
+	return large;
+    }
+
+    public static int quickSelect(int[] data, int k){
+	int n = part(data, 0, data.length -1);
+	if(n < k){
+	    int[] ary = new int[data.length - 1 - n];
+	    for(int x = 0; x < ary.length; x++){
+		ary[x] = data[n + x + 1];
 	    }
+	    return quickSelect(ary, k - n);
 	}
-	return -1;
+	else if(n > k){
+	    int[] ary = new int[n - 1];
+	    for(int x = 0; x < ary.length; x++){
+		ary[x] = data[x];
+	    }
+	    return quickSelect(ary, k);
+	}
+	else{
+	    return data[k];
+	}
     }
 
     public static void main(String[] args){
-	int[] ary = {999,999,999,4,1,0,3,2,999,999,999};
-	System.out.println(part(ary, 0, 10));
-	System.out.println(Arrays.toString(ary));
+	int[] ary = { 2, 10, 15, 23, 0,  5};
+	for(int x = 0; x < 6; x++){
+	    System.out.println(quickSelect(ary, x));
+	}
     }
 
 
