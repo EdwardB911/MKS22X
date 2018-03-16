@@ -12,7 +12,7 @@ public class Quick{
     public static int part(int[] data, int start, int end){
 	Random rand = new Random();
 	int n = start + rand.nextInt(end - start);
-	if(end - start < 2){
+	if(end - start == 0){
 	    return n;
 	}
 	int x = data[n];
@@ -53,11 +53,36 @@ public class Quick{
 	}
     }
 
-    public static void main(String[] args){
-	int[] ary = { 2, 10, 15, 23, 0,  5};
-	for(int x = 0; x < 6; x++){
-	    System.out.println(quickSelect(ary, x));
+    public static int[] partition(int[] data, int lo, int hi){
+	Random rand = new Random();
+	int n = lo + rand.nextInt(hi - lo);
+	int lt = lo;
+	int i = lo + 1;
+	int gt = hi;
+	int pivot = data[n];
+	swap(data, lo, n); 
+	while(i <= gt){
+	    if (data[i] == pivot){
+		i = i + 1;
+	    }
+	    else if (data[i] >  pivot){
+		swap(data, i, gt);
+		gt = gt - 1;
+	    }
+	    else{
+		swap(data, i, lt);
+		lt = lt + 1;
+		i = i+1;
+	    }
 	}
+	int[] ary = {lt,gt};
+	return ary;
+    }
+
+    public static void main(String[] args){
+	int[] ary = { 2, 1, 0, 1, 0,  2};
+	System.out.println(Arrays.toString(partition(ary, 0, 5)));
+	System.out.println(Arrays.toString(ary));
     }
     
 }
