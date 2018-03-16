@@ -32,21 +32,21 @@ public class Quick{
 	return large;
     }
 
-    public static int quickSelect(int[] data, int k){
+    public static int badQuickSelect(int[] data, int k){
 	int n = part(data, 0, data.length -1);
 	if(n < k){
 	    int[] ary = new int[data.length - 1 - n];
 	    for(int x = 0; x < ary.length; x++){
 		ary[x] = data[n + x + 1];
 	    }
-	    return quickSelect(ary, k - n + 1);
+	    return badQuickSelect(ary, k - n + 1);
 	}
 	else if(n > k){
 	    int[] ary = new int[n - 1];
 	    for(int x = 0; x < ary.length; x++){
 		ary[x] = data[x];
 	    }
-	    return quickSelect(ary, k);
+	    return badQuickSelect(ary, k);
 	}
 	else{
 	    return data[k];
@@ -79,9 +79,14 @@ public class Quick{
 	return ary;
     }
 
+    public static int quickSelect(int[] data, int k){
+	int[] ary = partition(data, 0, data.length);
+	return 0;
+    }
+
     public static void main(String[] args){
-	int[] ary = { 2, 1, 0, 1, 0,  2};
-	System.out.println(Arrays.toString(partition(ary, 0, 5)));
+	int[] ary = { 2, 1, 2, 0, 1, 0,  2, 1, 0};
+	System.out.println(Arrays.toString(partition(ary, 0, 1)));
 	System.out.println(Arrays.toString(ary));
     }
     
