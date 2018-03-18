@@ -80,13 +80,30 @@ public class Quick{
     }
 
     public static int quickSelect(int[] data, int k){
-	int[] ary = partition(data, 0, data.length);
-	return 0;
+	int[] ary = partition(data, 0, data.length - 1);
+	if(ary[0] <= k && k <= ary[1]){
+	    return data[k];
+	}
+	else if(k < ary[0]){
+	    int[] sub = new int[ary[1]];
+	    for(int x = 0; x < sub.length ;x++){
+		sub[x] = data[x];
+	    }
+	    return quickSelect(sub, k);
+	}
+	else{
+	    int[] sub = new int[data.length - ary[1] - 1];
+	    for(int x = 0; x < sub.length; x++){
+		sub[x] = data[ary[1] + 1 + x];
+	    }
+	    return quickSelect(sub, k - ary[1] - 1);
+	}
+	    
     }
 
     public static void main(String[] args){
 	int[] ary = { 2, 1, 2, 0, 1, 0,  2, 1, 0};
-	System.out.println(Arrays.toString(partition(ary, 0, 1)));
+	System.out.println(quickSelect(ary, 4));
 	System.out.println(Arrays.toString(ary));
     }
     
