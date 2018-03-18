@@ -11,7 +11,7 @@ public class Quick{
 
     public static int part(int[] data, int start, int end){
 	Random rand = new Random();
-	int n = start + rand.nextInt(end - start);
+	int n = start + rand.nextInt(end - start +1);
 	if(end - start == 0){
 	    return n;
 	}
@@ -55,7 +55,7 @@ public class Quick{
 
     public static int[] partition(int[] data, int lo, int hi){
 	Random rand = new Random();
-	int n = lo + rand.nextInt(hi - lo);
+	int n = lo + rand.nextInt(hi - lo + 1);
 	int lt = lo;
 	int i = lo + 1;
 	int gt = hi;
@@ -101,9 +101,23 @@ public class Quick{
 	    
     }
 
+    public static void quickSort(int[] data){
+	int[] ary = partition(data, 0, data.length - 1);
+	quickSort(data, ary[1] + 1, data.length - 1);
+	quickSort(data, 0, ary[0] -1);
+    }
+
+    public static void quickSort(int[] data, int start, int end){
+	int[] ary = partition(data, start, end);
+	if(end - start > 0){
+	    quickSort(data, start, ary[0] - 1);
+	    quickSort(data, ary[1] + 1, end - 1);
+	}
+    }
+
     public static void main(String[] args){
 	int[] ary = { 2, 1, 2, 0, 1, 0,  2, 1, 0};
-	System.out.println(quickSelect(ary, 4));
+	quickSort(ary);
 	System.out.println(Arrays.toString(ary));
     }
     
