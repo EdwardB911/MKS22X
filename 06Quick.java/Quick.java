@@ -9,49 +9,49 @@ public class Quick{
 	ary[b] = c;
     }
 
-    public static int part(int[] data, int start, int end){
-	Random rand = new Random();
-	int n = start + rand.nextInt(end - start +1);
-	if(end - start == 0){
-	    return n;
-	}
-	int x = data[n];
-	swap(data, start, n);
-	int small = start + 1;
-	int large = end;
-	while(small <= large){
-	    if(data[small] < data[start]){
-		small = small + 1;
-	    }
-	    else{
-		swap(data, small, large);
-		large = large -1;
-	    }
-	}
-	swap(data, start, large);
-	return large;
-    }
+    // public static int part(int[] data, int start, int end){
+    // 	Random rand = new Random();
+    // 	int n = start + rand.nextInt(end - start +1);
+    // 	if(end - start == 0){
+    // 	    return n;
+    // 	}
+    // 	int x = data[n];
+    // 	swap(data, start, n);
+    // 	int small = start + 1;
+    // 	int large = end;
+    // 	while(small <= large){
+    // 	    if(data[small] < data[start]){
+    // 		small = small + 1;
+    // 	    }
+    // 	    else{
+    // 		swap(data, small, large);
+    // 		large = large -1;
+    // 	    }
+    // 	}
+    // 	swap(data, start, large);
+    // 	return large;
+    // }
 
-    public static int badQuickSelect(int[] data, int k){
-	int n = part(data, 0, data.length -1);
-	if(n < k){
-	    int[] ary = new int[data.length - 1 - n];
-	    for(int x = 0; x < ary.length; x++){
-		ary[x] = data[n + x + 1];
-	    }
-	    return badQuickSelect(ary, k - n + 1);
-	}
-	else if(n > k){
-	    int[] ary = new int[n - 1];
-	    for(int x = 0; x < ary.length; x++){
-		ary[x] = data[x];
-	    }
-	    return badQuickSelect(ary, k);
-	}
-	else{
-	    return data[k];
-	}
-    }
+    // public static int badQuickSelect(int[] data, int k){
+    // 	int n = part(data, 0, data.length -1);
+    // 	if(n < k){
+    // 	    int[] ary = new int[data.length - 1 - n];
+    // 	    for(int x = 0; x < ary.length; x++){
+    // 		ary[x] = data[n + x + 1];
+    // 	    }
+    // 	    return badQuickSelect(ary, k - n + 1);
+    // 	}
+    // 	else if(n > k){
+    // 	    int[] ary = new int[n - 1];
+    // 	    for(int x = 0; x < ary.length; x++){
+    // 		ary[x] = data[x];
+    // 	    }
+    // 	    return badQuickSelect(ary, k);
+    // 	}
+    // 	else{
+    // 	    return data[k];
+    // 	}
+    // }
 
     public static int[] partition(int[] data, int lo, int hi){
 	Random rand = new Random();
@@ -107,9 +107,9 @@ public class Quick{
 	quickSort(data, 0, ary[0] -1);
     }
 
-    public static void quickSort(int[] data, int start, int end){
-	int[] ary = partition(data, start, end);
+    public static void quickSort(int[] data, int start, int end){	
 	if(end - start > 0){
+	    int[] ary = partition(data, start, end);
 	    quickSort(data, start, ary[0] - 1);
 	    quickSort(data, ary[1] + 1, end - 1);
 	}
