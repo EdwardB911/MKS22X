@@ -48,7 +48,7 @@ public class KnightBoard{
 	   startingRow < 0 || startingCol < 0){
 	    throw new IllegalArgumentException();
 	}
-	return solveH(startingRow, startingCol, 1, 0);
+	return solveH(startingRow, startingCol, 1);
     }
 
     public boolean solveH(int startingRow, int startingCol, int level, int choice){
@@ -113,13 +113,14 @@ public class KnightBoard{
 	   startingRow < 0 || startingCol < 0){
 	    throw new IllegalArgumentException();
 	}
-	return countSolutionsH(startingRow, startingCol, 1, 0, 0);
+	return countSolutionsH(startingRow, startingCol, 1);
     }
 
     public int countSolutionsH(int startingRow, int startingCol, int level, int choice, int solutions){
-	System.out.println(Text.go(1,1));
+	// System.out.println(Text.go(1,1));
+	// System.out.println(this);
+	// Text.wait(100); //adjust this delay
 	System.out.println(this);
-	Text.wait(100); //adjust this delay
 	if (choice > 7){
 	    if (level >= board.length * board[0].length){
 		board[startingRow][startingCol] = 0;
@@ -183,14 +184,57 @@ public class KnightBoard{
 	}
     }
 
+
+    public boolean solveH(int startingRow, int startingCol, int level){
+	board[startingRow][startingCol] = level;
+	// System.out.println(this);
+	if(level == board.length * board[0].length){
+	    return true;
+	}
+	for(int x = 0; x < 8; x++){
+	    if(startingRow + cycle[x][0] >= board.length || startingCol + cycle[x][1] >= board[0].length ||
+	       startingRow + cycle[x][0] < 0 || startingCol + cycle[x][1] < 0){
+		
+	    }
+	    else if(board[startingRow + cycle[x][0]][startingCol + cycle[x][1]] == 0){
+		if(solveH(startingRow + cycle[x][0], startingCol + cycle[x][1], level + 1)){
+		    return true;
+		}
+		
+	    }
+	}
+	return false;
+    }
+
+    public int countSolutionsH(int startingRow, int startingCol, int level){
+	int total = 0;
+	board[startingRow][startingCol] = level;
+	// System.out.println(this);
+	if(level == board.length * board[0].length){
+	    board[startingRow][startingCol] = 0;
+	    return 1;
+	}
+	for(int x = 0; x < 8; x++){
+	    if(startingRow + cycle[x][0] >= board.length || startingCol + cycle[x][1] >= board[0].length ||
+	       startingRow + cycle[x][0] < 0 || startingCol + cycle[x][1] < 0){
+		
+	    }
+	    else if(board[startingRow + cycle[x][0]][startingCol + cycle[x][1]] == 0){
+		total += countSolutionsH(startingRow + cycle[x][0], startingCol + cycle[x][1], level + 1);   		
+	    }
+	}
+	board[startingRow][startingCol] = 0;
+	return total;
+    }
+
     
 	
 	
 
     public static void main(String[] args){
-	KnightBoard brd = new KnightBoard(4, 4);
+	KnightBoard brd = new KnightBoard(5, 5);
 	System.out.println(brd.countSolutions(0,0));
-	System.out.println(brd.toString());
+        
     }	
 	 
 		
