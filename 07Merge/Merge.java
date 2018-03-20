@@ -1,6 +1,9 @@
+import java.util.*;
+import java.io.*;
+
 public class merge{
 
-    public static void merge(data, temp, lo, mid, shift, high){
+    public static void merge(int[] data,int[] temp,int lo,int mid,int shift,int high){
 	int x = lo;
 	int y = shift;
 	int place = lo
@@ -28,6 +31,19 @@ public class merge{
 	    place++
 	}
     }
+
+    public static void main(String[] args){
+	int[] a = {0,2,1,5,4};
+	int[] b = {6,6,6,6,6};
+	merge(a,b,0,2,3,4);
+	System.out.println(Arrays.toString(b));
+    }
+
+
+
+
+
+}
 
     
 			
