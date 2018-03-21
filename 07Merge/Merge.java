@@ -3,23 +3,20 @@ import java.io.*;
 
 public class Merge{
 
-    public static void merge(int[] data,int[] temp,int lo,int mid,int shift,int high){
+    public static void merge(int[] data,int[] temp,int lo,int mid, int high){
 	int x = lo;
-	int y = shift;
-	int place = lo;
-	while(x <= mid || y <= high){
-	    if(x > mid){
+	int y = mid + 1;
+	for(int place = lo; place <= high; place++){
+	    if (x > mid){
 		temp[place] = data[y];
 		y++;
 	    }
-	    else if(y > mid){
+	    else if (y > high){
 		temp[place] = data[x];
 		x++;
 	    }
 	    else{
-		int a = data[x];
-		int b = data[y];
-		if(a < b){
+		if (data[x] < data[y]){
 		    temp[place] = data[x];
 		    x++;
 		}
@@ -28,15 +25,31 @@ public class Merge{
 		    y++;
 		}
 	    }
-	    place++;
 	}
     }
 
+    public static void mergesort(int[] data){
+	int[] temp = new int[data.length];
+	for(int x = 0; x < data.length; x++){
+	    temp[x] = data[x];
+	}
+	msort(data, temp , 0, data.length - 1);
+    }
+
+    public static void msort(int[] data, int[] temp, int lo, int hi){
+	if (lo < hi){
+	    int mdpt = (lo + hi)/2;
+	    msort(temp, data, lo, mdpt);
+	    msort(temp, data, mdpt + 1, hi);
+	    merge(temp, data, lo, mdpt, hi);
+	}
+    }
+	
+
     public static void main(String[] args){
-	int[] a = {0,5,1,2,4};
-	int[] b = {6,6,6,6,6};
-	merge(a,b,0,2,3,4);
-	System.out.println(Arrays.toString(b));
+	int[] a = {4,2,8,1,6,3};	
+	mergesort(a);
+	System.out.println(Arrays.toString(a));
     }
 
 
