@@ -40,7 +40,7 @@ public class Merge{
 	insertionSort(ary, 0, ary.length);
     }
 
-    private static void swap(int[]ary,int a, int b){                    
+    public static void swap(int[]ary,int a, int b){                    
 	int c =ary[a];
 	ary[a] = ary[b];
 	ary[b] = c;
@@ -56,16 +56,7 @@ public class Merge{
 	}
     }
 
-    // public static void msort(int[] data, int[] temp, int lo, int hi){
-    // 	if (lo < hi){
-    // 	    int mdpt = (lo + hi)/2;
-    // 	    msort(temp, data, lo, mdpt);
-    // 	    msort(temp, data, mdpt + 1, hi);
-    // 	    merge(temp, data, lo, mdpt, hi);
-    // 	}
-    // }
-
-     public static void msort(int[] data, int[] temp, int lo, int hi){
+    public static void msort(int[] data, int[] temp, int lo, int hi){
 	if (lo < hi){
 	    int mdpt = (lo + hi)/2;
 	    msort(temp, data, lo, mdpt);
@@ -78,7 +69,8 @@ public class Merge{
 
     public static void main(String[] args){
 	int[] a = {4,2,8,1,6,3};	
-	insertionSort(a);
+	// insertionSort(a);
+	mergesort(a);
 	System.out.println(Arrays.toString(a));
     }
 
