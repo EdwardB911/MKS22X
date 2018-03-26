@@ -63,17 +63,25 @@ public class Test{
 
     int [] start = makeArray(size,type);
     int [] result = Arrays.copyOf(start,start.length);
+    int [] clone = Arrays.copyOf(start,start.length);
     Arrays.sort(result);
-    
     long startTime = System.currentTimeMillis();
-    /*
-     * Test your sort here!
-     */
-    // Merge.mergesort(start);
-    Merge.insertionSort(start);
+    Merge.mergesort(start);
     long elapsedTime = System.currentTimeMillis() - startTime;
+    
+    long startTime2 = System.currentTimeMillis();
+
+    Merge.insertionSort(clone);
+
+    long elapsedTime2 = System.currentTimeMillis() - startTime2;
     if(Arrays.equals(start,result)){
       System.out.println("PASS Case "+name(type)+" array, size:"+size+" "+elapsedTime/1000.0+"sec ");
+    }else{
+      System.out.println("FAIL ! ERROR ! "+name(type)+" array, size:"+size+"  ERROR!");
+    }
+
+    if(Arrays.equals(clone,result)){
+      System.out.println("PASS Case "+name(type)+" array, size:"+size+" "+elapsedTime2/1000.0+"sec ");
     }else{
       System.out.println("FAIL ! ERROR ! "+name(type)+" array, size:"+size+"  ERROR!");
     }
