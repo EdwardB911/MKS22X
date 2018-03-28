@@ -79,7 +79,7 @@ public class Quick{
 	return ary;
     }
 
-    public static int quickSelect(int[] data, int k){
+    public static int quickselect(int[] data, int k){
 	int[] ary = partition(data, 0, data.length - 1);
 	if(ary[0] <= k && k <= ary[1]){
 	    return data[k];
@@ -89,35 +89,35 @@ public class Quick{
 	    for(int x = 0; x < sub.length ;x++){
 		sub[x] = data[x];
 	    }
-	    return quickSelect(sub, k);
+	    return quickselect(sub, k);
 	}
 	else{
 	    int[] sub = new int[data.length - ary[1] - 1];
 	    for(int x = 0; x < sub.length; x++){
 		sub[x] = data[ary[1] + 1 + x];
 	    }
-	    return quickSelect(sub, k - ary[1] - 1);
+	    return quickselect(sub, k - ary[1] - 1);
 	}
 	    
     }
 
-    public static void quickSort(int[] data){
+    public static void quicksort(int[] data){
 	int[] ary = partition(data, 0, data.length - 1);
-	quickSort(data, ary[1] + 1, data.length - 1);
-	quickSort(data, 0, ary[0] -1);
+	quicksort(data, ary[1] + 1, data.length - 1);
+	quicksort(data, 0, ary[0] -1);
     }
 
-    public static void quickSort(int[] data, int start, int end){	
+    public static void quicksort(int[] data, int start, int end){	
 	if(end - start > 0){
 	    int[] ary = partition(data, start, end);
-	    quickSort(data, start, ary[0] - 1);
-	    quickSort(data, ary[1] + 1, end - 1);
+	    quicksort(data, start, ary[0] - 1);
+	    quicksort(data, ary[1] + 1, end - 1);
 	}
     }
 
     public static void main(String[] args){
 	int[] ary = { 2, 1, 2, 0, 1, 0,  2, 1, 0};
-	quickSort(ary);
+	quicksort(ary);
 	System.out.println(Arrays.toString(ary));
     }
     
