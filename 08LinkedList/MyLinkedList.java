@@ -18,6 +18,10 @@ public class MyLinkedList{
 	    return prev;
 	}
 
+	public void setPrev(Node n){
+	    prev = n;
+	}
+
 	public int getValue(){
 	    return data;
 	}
