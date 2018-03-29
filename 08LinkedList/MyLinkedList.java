@@ -29,5 +29,12 @@ public class MyLinkedList{
     }
 
     private Node start, end;
+    private int size;
+
+    public MyLinkedList(){
+	start = null;
+	end = null;
+	size = 0;
+    }
     
 }
