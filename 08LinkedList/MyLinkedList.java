@@ -4,27 +4,30 @@ public class MyLinkedList{
 	private Node next, prev;
 	private int data;
 
-	private Node(int x){
+	public Node(int x){
 	    data = x;
 	    next = null;
 	    prev = null;
 	}
 
-	private Node getNext(){
+	public Node getNext(){
 	    return next;
 	}
 
-	private Node getPrev(){
+	public Node getPrev(){
 	    return prev;
 	}
 
-	private int getValue(){
+	public int getValue(){
 	    return data;
 	}
 
-	private String toString(){
+	public String toString(){
 	    return String.valueOf(data);
 	}
 	    
     }
+
+    private Node start, end;
+    
 }
