@@ -5,10 +5,15 @@ public class MyLinkedList{
 	private int data;
 
 	public Node(int x){
-	    data = x;
-	    next = null;
+	    data = x;	    
 	    prev = null;
+	    next = null;
 	}
+
+	public Node(int x, Node m, Node n){
+	    data = x;
+	    prev = m;
+	    next = n
 
 	public Node getNext(){
 	    return next;
