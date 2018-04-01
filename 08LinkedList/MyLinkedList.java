@@ -13,7 +13,8 @@ public class MyLinkedList{
 	public Node(int x, Node m, Node n){
 	    data = x;
 	    prev = m;
-	    next = n
+	    next = n;
+	}
 
 	public Node getNext(){
 	    return next;
