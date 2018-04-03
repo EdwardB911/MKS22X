@@ -46,5 +46,20 @@ public class MyLinkedList{
 	end = null;
 	size = 0;
     }
+
+    public String toString(){
+	if(size == 0){ 
+ 	    return "[]"; 
+ 	} 
+ 	String str = "["; 
+ 	Node current = start; 
+ 	while(current.getNext() != null){ 
+ 	    str = str + current.toString() + ", "; 
+ 	    current = current.getNext(); 
+ 	} 
+ 	return str + current.toString() + "]"; 
+    } 
+
+	
     
 }
