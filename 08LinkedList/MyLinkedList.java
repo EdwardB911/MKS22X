@@ -20,6 +20,10 @@ public class MyLinkedList{
 	    return next;
 	}
 
+	public void setNext(Node n){
+	    next = n;
+	}
+
 	public Node getPrev(){
 	    return prev;
 	}
@@ -58,7 +62,33 @@ public class MyLinkedList{
  	    current = current.getNext(); 
  	} 
  	return str + current.toString() + "]"; 
-    } 
+    }
+
+    public boolean add(Integer value){
+	if(size == 0){
+	    start = new Node(value);
+	    end = new Node(value);
+	}
+	else{
+	    Node addition = new Node(value);
+	    addition.setPrev(end);
+	    end.setNext(addition);
+	    end = addition;
+	}
+	size = size + 1; 
+ 	return true; 
+     }
+
+    public static void main(String args[]){ 
+ 	MyLinkedList l = new MyLinkedList(); 
+ 	System.out.println(l.toString()); 
+ 	l.add(1); 
+	System.out.println(l.toString()); 
+ 	l.add(2); 
+	System.out.println(l.toString());
+    }
+
+
 
 	
     
