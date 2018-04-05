@@ -132,7 +132,7 @@ public class MyLinkedList{
     }
 
     public void add(int index, Integer value){
-	if(index < 0 || index >= size){ 
+	if(index < 0 || index > size){ 
  	    throw new IndexOutOfBoundsException(); 
  	}
 	Node addition = new Node(value);
