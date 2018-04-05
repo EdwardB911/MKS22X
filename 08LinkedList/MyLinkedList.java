@@ -84,9 +84,19 @@ public class MyLinkedList{
  	start = null; 
  	end = null; 
  	size = 0; 
-    } 
-    
+    }
 
+    private Node getNode(int n){ 
+ 	if(n < 0 || n >= size){ 
+ 	    throw new IndexOutOfBoundsException(); 
+ 	} 
+ 	Node current = start; 
+ 	while(n > 0){ 
+ 	    current = current.getNext(); 
+ 	    n = n - 1; 
+ 	} 
+ 	return current; 
+    }
     
 
     public static void main(String args[]){ 
@@ -96,6 +106,8 @@ public class MyLinkedList{
 	System.out.println(l.toString()); 
  	l.add(2); 
 	System.out.println(l.toString());
+	Node n = l.getNode(0);
+	System.out.println(n.toString());
     }
 
 
