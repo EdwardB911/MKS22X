@@ -64,14 +64,14 @@ public class MyLinkedList{
  	return str + current.toString() + "]"; 
     }
 
-    public boolean add(Integer value){
+    public boolean add(Integer newData){
 	if(size == 0){
-	    Node addition = new Node(value);
+	    Node addition = new Node(newData);
 	    start = addition;
 	    end = addition;
 	}
 	else{
-	    Node addition = new Node(value);
+	    Node addition = new Node(newData);
 	    addition.setPrev(end);
 	    end.setNext(addition);
 	    end = addition;
@@ -86,16 +86,21 @@ public class MyLinkedList{
  	size = 0; 
     }
 
-    private Node getNode(int n){ 
- 	if(n < 0 || n >= size){ 
+    private Node getNode(int index){ 
+ 	if(index < 0 || index >= size){ 
  	    throw new IndexOutOfBoundsException(); 
  	} 
  	Node current = start; 
- 	while(n > 0){ 
+ 	while(index > 0){ 
  	    current = current.getNext(); 
- 	    n = n - 1; 
+ 	    index = index - 1; 
  	} 
  	return current; 
+    }
+
+    public Integer get(int index){
+	Node current = getNode(index);
+	return current.getValue();
     }
     
 
@@ -106,8 +111,7 @@ public class MyLinkedList{
 	System.out.println(l.toString()); 
  	l.add(2); 
 	System.out.println(l.toString());
-	Node n = l.getNode(0);
-	System.out.println(n.toString());
+	System.out.println(l.get(1));
     }
 
 
