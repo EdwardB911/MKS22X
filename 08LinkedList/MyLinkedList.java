@@ -66,8 +66,9 @@ public class MyLinkedList{
 
     public boolean add(Integer value){
 	if(size == 0){
-	    start = new Node(value);
-	    end = new Node(value);
+	    Node addition = new Node(value);
+	    start = addition;
+	    end = addition;
 	}
 	else{
 	    Node addition = new Node(value);
@@ -77,7 +78,16 @@ public class MyLinkedList{
 	}
 	size = size + 1; 
  	return true; 
-     }
+    }
+
+    public void clear(){ 
+ 	start = null; 
+ 	end = null; 
+ 	size = 0; 
+    } 
+    
+
+    
 
     public static void main(String args[]){ 
  	MyLinkedList l = new MyLinkedList(); 
