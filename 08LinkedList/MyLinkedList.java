@@ -36,6 +36,10 @@ public class MyLinkedList{
 	    return data;
 	}
 
+	public void setValue(int x){
+	    data = x;
+	}
+
 	public String toString(){
 	    return String.valueOf(data);
 	}
@@ -102,6 +106,13 @@ public class MyLinkedList{
 	Node current = getNode(index);
 	return current.getValue();
     }
+
+    public Integer set(int index, Integer value){
+	Node current = getNode(index);
+	int n = current.getValue();
+	current.setValue(value);
+	return n;
+    }
     
 
     public static void main(String args[]){ 
@@ -111,7 +122,8 @@ public class MyLinkedList{
 	System.out.println(l.toString()); 
  	l.add(2); 
 	System.out.println(l.toString());
-	System.out.println(l.get(1));
+	System.out.println(l.set(0, 4));
+	System.out.println(l.toString());
     }
 
 
