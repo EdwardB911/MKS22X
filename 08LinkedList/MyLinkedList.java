@@ -156,7 +156,58 @@ public class MyLinkedList{
 	}
     }
 
-    public boolean remove(Integer value)
+    public boolean remove(Integer value){
+	int x = indexOf(value);
+	if(x == -1){
+	    return false;
+	}
+	else if(x == 0){
+	    start = start.getNext();
+	    start.setPrev(null);
+	    size = size - 1;
+	}
+	else if(x == size - 1){
+	    end = end.getPrev();
+	    end.setNext(null);
+	    size = size - 1;
+	}
+	else{
+	    Node before = getNode(x - 1);
+	    Node after = getNode(x + 1);
+	    before.setNext(after);
+	    after.setPrev(before);
+	    size = size - 1;
+	}
+	return true;
+    }
+
+    public Integer remove(int index){
+	if(index < 0 || index >= size){ 
+ 	    throw new IndexOutOfBoundsException(); 
+ 	}
+	int x = get(index);
+	if(index == 0){
+	    start = start.getNext();
+	    start.setPrev(null);
+	    size = size - 1;
+	}
+	else if(index == size - 1){
+	    end = end.getPrev();
+	    end.setNext(null);
+	    size = size - 1;
+	}
+	else{
+	    Node before = getNode(index - 1);
+	    Node after = getNode(index + 1);
+	    before.setNext(after);
+	    after.setPrev(before);
+	    size = size - 1;
+	}
+	return x;
+    }
+	
+	    
+	    
 
 
     public static void main(String args[]){ 
@@ -170,7 +221,14 @@ public class MyLinkedList{
 	System.out.println(l.toString());
 	l.add(2, 4);
 	System.out.println(l.toString());
-	
+	l.remove(3);
+	System.out.println(l.toString());
+	l.remove(1);
+	System.out.println(l.toString());
+	l.remove(0);
+	System.out.println(l.toString());
+	l.remove(12);
+	System.out.println(l.toString());	
     }
 
 
