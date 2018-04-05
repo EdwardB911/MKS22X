@@ -90,6 +90,10 @@ public class MyLinkedList{
  	size = 0; 
     }
 
+    public int size(){
+	return size;
+    }
+
     private Node getNode(int index){ 
  	if(index < 0 || index >= size){ 
  	    throw new IndexOutOfBoundsException(); 
@@ -113,6 +117,19 @@ public class MyLinkedList{
 	current.setValue(value);
 	return n;
     }
+
+    public int indexOf(Integer value){
+	int x = 0;
+	Node current = start;
+	while(current != null){
+	    if(current.getValue() == value){
+		return x;
+	    }
+	    x = x + 1;
+	    current = current.getNext();
+	}
+	return -1;
+    }
     
 
     public static void main(String args[]){ 
@@ -124,6 +141,10 @@ public class MyLinkedList{
 	System.out.println(l.toString());
 	System.out.println(l.set(0, 4));
 	System.out.println(l.toString());
+	System.out.println(l.indexOf(4));
+	System.out.println(l.indexOf(2));
+	System.out.println(l.indexOf(6));
+	
     }
 
 
