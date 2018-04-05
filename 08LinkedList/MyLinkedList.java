@@ -130,7 +130,34 @@ public class MyLinkedList{
 	}
 	return -1;
     }
-    
+
+    public void add(int index, Integer value){
+	if(index < 0 || index >= size){ 
+ 	    throw new IndexOutOfBoundsException(); 
+ 	}
+	Node addition = new Node(value);
+	if (index == size){
+	    add(value);
+	}	
+	else if (index == 0){	   
+	    addition.setNext(start);
+	    start.setPrev(addition);
+	    start = addition;
+	    size = size + 1;
+	}
+	else{
+	    Node after = getNode(index);
+	    Node before = after.getPrev();
+	    addition.setNext(after);
+	    addition.setPrev(before);
+	    before.setNext(addition);
+	    after.setPrev(addition);
+	    size = size + 1;
+	}
+    }
+
+    public boolean remove(Integer value)
+
 
     public static void main(String args[]){ 
  	MyLinkedList l = new MyLinkedList(); 
@@ -139,11 +166,10 @@ public class MyLinkedList{
 	System.out.println(l.toString()); 
  	l.add(2); 
 	System.out.println(l.toString());
-	System.out.println(l.set(0, 4));
+	l.add(0, 3);
 	System.out.println(l.toString());
-	System.out.println(l.indexOf(4));
-	System.out.println(l.indexOf(2));
-	System.out.println(l.indexOf(6));
+	l.add(2, 4);
+	System.out.println(l.toString());
 	
     }
 
