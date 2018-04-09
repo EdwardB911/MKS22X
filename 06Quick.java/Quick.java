@@ -109,14 +109,16 @@ public class Quick{
 
     public static void quicksort(int[] data, int start, int end){	
 	if(end - start > 0){
-	    int[] ary = partition(data, start, end);
+	    int[] ary = partition(data, start, end);	    
+	    // System.out.println(Arrays.toString(data));
+	    // System.out.println(Arrays.toString(ary));
 	    quicksort(data, start, ary[0] - 1);
-	    quicksort(data, ary[1] + 1, end - 1);
+	    quicksort(data, ary[1] + 1, end);
 	}
     }
 
     public static void main(String[] args){
-	int[] ary = { 2, 1, 2, 0, 1, 0,  2, 1, 0};
+	int[] ary = { 2, 1, 2, 0, 1, 0,  2, 1, 0, -5, 12, 5,6, 7,4,233,4, 5,-12,-12,-12};
 	quicksort(ary);
 	System.out.println(Arrays.toString(ary));
     }
