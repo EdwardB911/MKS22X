@@ -113,10 +113,9 @@ public class USACO{
 	    }
 	    for(int row = 0; row < N; row++){
 		for(int col = 0; col < M; col++){
-		    if(plot[row][col] == '*'){
-			newNums[row][col] = 0;
-		    }
-		    else{
+		    newNums[row][col] = 0;
+		    
+		    if(!(plot[row][col] == '*')){
 			try{
 			    newNums[row][col] += oldNums[row + 1][col];
 			}
@@ -136,9 +135,22 @@ public class USACO{
 		    }
 		}
 	    }
+	    System.out.println(toString(newNums));
 	}
 	return newNums[R2 -1][C2 -1];
     }
+
+    public static String toString(int[][] ary){
+	String str = "";
+	for(int x = 0; x < ary.length; x++){
+	    for(int y = 0; y < ary[0].length; y++){
+		str = str + ary[x][y] + ", ";
+	    }
+	    str = str + "\n";
+	}
+	return str;
+    }
+	    
 	    
 	
 
