@@ -1,4 +1,4 @@
-public class MyLinkedList{
+public class MyLinkedListImproved{
 
     private class Node{
 	private Node next, prev;
