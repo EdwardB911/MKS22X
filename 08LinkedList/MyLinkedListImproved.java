@@ -207,25 +207,34 @@ public class MyLinkedListImproved<T>{
     }	    
 
 
-    public static void main(String args[]){ 
- 	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>(); 
- 	System.out.println(l.toString()); 
- 	l.add(1); 
-	System.out.println(l.toString()); 
- 	l.add(2); 
-	System.out.println(l.toString());
-	l.add(0, 3);
-	System.out.println(l.toString());
-	l.add(2, 4);
-	System.out.println(l.toString());
-	l.remove(3);
-	System.out.println(l.toString());
-	l.remove(1);
-	System.out.println(l.toString());
-	l.remove(0);
-	System.out.println(l.toString());
-	l.remove(12);
-	System.out.println(l.toString());	
+    // public static void main(String args[]){ 
+    // 	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>(); 
+    // 	System.out.println(l.toString()); 
+    // 	l.add(1); 
+    // 	System.out.println(l.toString()); 
+    // 	l.add(2); 
+    // 	System.out.println(l.toString());
+    // 	l.add(0, 3);
+    // 	System.out.println(l.toString());
+    // 	l.add(2, 4);
+    // 	System.out.println(l.toString());
+    // 	l.remove(3);
+    // 	System.out.println(l.toString());
+    // 	l.remove(1);
+    // 	System.out.println(l.toString());
+    // 	l.remove(0);
+    // 	System.out.println(l.toString());
+    // 	l.remove(12);
+    // 	System.out.println(l.toString());	
+    // }
+
+    public static void main(String args[]){
+	MyLinkedListImproved<String> n = new MyLinkedListImproved<>();
+        n.add("fish");
+	System.out.println(n);
+	MyLinkedListImproved<Integer> m = new MyLinkedListImproved<>();
+        m.add(new Integer(0));
+	System.out.println(m);
     }
 
 
