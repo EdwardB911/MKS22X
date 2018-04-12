@@ -1,4 +1,7 @@
-public class MyLinkedListImproved<T>{
+import java.util.*;
+import java.io.*;
+
+public class MyLinkedListImproved<T> implements Iterable<T>{
 
     private class Node{
 	private Node next, prev;
@@ -204,7 +207,36 @@ public class MyLinkedListImproved<T>{
 	    size = size - 1;
 	}
 	return x;
-    }	    
+    }
+
+    public Iterator<T> iterator(){
+	return LLIterator(this);
+    }
+
+    private class LLIterator implements Iterator<T>{
+
+	private Node next;
+
+	public LLIterator(MyLinkedListImproved l){
+	    next = l.start;
+	}
+
+	public boolean hasNext(){
+	    return (next.getValue() != null);
+	}
+
+	public Node next(){
+	    if(hasNext()){
+		next = next.getNext();
+	    }
+	    else{
+		System.exit(0);
+	    }
+	    return next.getPrev();
+	}
+    }
+		
+	
 
 
     // public static void main(String args[]){ 
