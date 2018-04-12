@@ -250,14 +250,19 @@ public class MyLinkedListImproved<T> implements Iterable<T>{
     	System.out.println(l.toString());
     	l.add(2, 4);
     	System.out.println(l.toString());
-    	l.remove(3);
-    	System.out.println(l.toString());
-    	l.remove(1);
-    	System.out.println(l.toString());
-    	l.remove(0);
-    	System.out.println(l.toString());
-    	l.remove(12);
-    	System.out.println(l.toString());	
+    	// l.remove(3);
+    	// System.out.println(l.toString());
+    	// l.remove(1);
+    	// System.out.println(l.toString());
+    	// l.remove(0);
+    	// System.out.println(l.toString());
+    	// l.remove(12);
+    	// System.out.println(l.toString());
+
+	for(Integer n : l){
+	    System.out.println(n.toString());
+	}
+	
     }
 
     // public static void main(String args[]){
