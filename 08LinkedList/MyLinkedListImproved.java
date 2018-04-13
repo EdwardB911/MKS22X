@@ -256,7 +256,7 @@ public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
 	    for(T n : this){
 		if (n.compareTo(biggest) > 0){
 		    max = index;
-		    biggest = n.getValue;
+		    biggest = n;
 		}
 		index = index + 1;
 	    }
