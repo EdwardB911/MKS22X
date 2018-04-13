@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedListImproved<T> implements Iterable<T>{
+public class MyLinkedListImproved<T> implements Iterable<T extends Comparable>{
 
     private class Node{
 	private Node next, prev;
@@ -244,6 +244,27 @@ public class MyLinkedListImproved<T> implements Iterable<T>{
 	    }
 	}
     }
+
+    public int max(){
+	int max = 0;
+	int index = 0;
+	T biggest = start.getValue();
+	if (size == 0){
+	    return -1;
+	}
+	else{
+	    for(T n : this){
+		if (n.getValue().compareTo(biggest) > 0){
+		    max = index;
+		    biggest = n.getValue;
+		}
+		index = index + 1;
+	    }
+	    return max;
+	}
+    }
+		    
+	
 		
 	
 
