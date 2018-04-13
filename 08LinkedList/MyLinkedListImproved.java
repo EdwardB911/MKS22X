@@ -222,17 +222,26 @@ public class MyLinkedListImproved<T> implements Iterable<T>{
 	}
 
 	public boolean hasNext(){
-	    return (next.getValue() != null);
+	    try{
+		if (next.getValue() != null){
+		    return true;
+		}
+	    }
+	    catch(NullPointerException e){
+		return false;
+	    }
+	    return false;
 	}
-
+	
 	public T next(){
 	    if(hasNext()){
+		Node V = next;
 		next = next.getNext();
+		return V.getValue();
 	    }
 	    else{
 		throw new NoSuchElementException();
 	    }
-	    return next.getPrev().getValue();
 	}
     }
 		
