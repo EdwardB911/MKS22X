@@ -283,6 +283,18 @@ public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
 	}
 	return min;
     }
+
+    public void extend(MyLinkedListImproved<T> other){
+	if(other.size() != 0){
+	    int s = this.size() + other.size();
+	    end.setNext(other.start);
+	    other.start.setPrev(end);
+	    end = other.end;
+	    other.start = null;
+	    other.end = null;
+	    other.size = 0;
+	}
+    }
 		
 	
 
@@ -291,24 +303,21 @@ public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
     	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>(); 
     	System.out.println(l.toString()); 
     	l.add(1); 
-    	System.out.println(l.toString()); 
-    	l.add(2); 
-    	System.out.println(l.toString());
-    	l.add(0, 3);
-    	System.out.println(l.toString());
-    	l.add(2, 4);
-    	System.out.println(l.toString());
+	l.add(2); 
+	l.add(0, 3);
+	l.add(2, 4);
 	l.add(5);
     	System.out.println(l.toString());
-    	// l.remove(3);
-    	// System.out.println(l.toString());
-    	// l.remove(1);
-    	// System.out.println(l.toString());
-    	// l.remove(0);
-    	// System.out.println(l.toString());
-    	// l.remove(12);
-    	// System.out.println(l.toString());
-	System.out.println(l.min());
+    	MyLinkedListImproved<Integer> m = new MyLinkedListImproved<>(); 
+	m.add(1); 
+	m.add(2); 
+	m.add(0, 3);
+	m.add(2, 4);
+    	m.add(5);
+    	System.out.println(m.toString());
+	l.extend(m);
+	System.out.println(l.toString());
+	System.out.println(m.toString());
     }
 
     // public static void main(String args[]){
