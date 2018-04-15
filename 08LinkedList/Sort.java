@@ -47,6 +47,7 @@ public class Sort{
 	    MyLinkedListImproved<Integer> c = new MyLinkedListImproved<Integer>();
 	    for(int y = 0; y < 10; y++){
 		c.extend(buckets[y]);
+		System.out.println(c.toString());
 	    }
 	    data = c;
 	    System.out.println(data);

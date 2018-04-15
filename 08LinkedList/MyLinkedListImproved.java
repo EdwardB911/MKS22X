@@ -293,6 +293,7 @@ public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
 	    other.start = null;
 	    other.end = null;
 	    other.size = 0;
+	    size = s;
 	}
     }
 		
@@ -318,6 +319,7 @@ public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
 	l.extend(m);
 	System.out.println(l.toString());
 	System.out.println(m.toString());
+	System.out.println(l.size());
     }
 
     // public static void main(String args[]){
