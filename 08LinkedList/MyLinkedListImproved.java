@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+@SuppressWarnings("unchecked")
 
 public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
 
@@ -248,20 +249,39 @@ public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
     public int max(){
 	int max = 0;
 	int index = 0;
-	T biggest = start.getValue();
+	T est = start.getValue();
 	if (size == 0){
 	    return -1;
 	}
 	else{
 	    for(T n : this){
-		if (n.compareTo(biggest) > 0){
+		if (n.compareTo(est) > 0){
 		    max = index;
-		    biggest = n;
+		    est = n;
 		}
 		index = index + 1;
 	    }
 	}
 	return max;
+    }
+
+    public int min(){
+	int min = 0;
+	int index = 0;
+	T est = start.getValue();
+	if (size == 0){
+	    return -1;
+	}
+	else{
+	    for(T n : this){
+		if (n.compareTo(est) < 0){
+		    min = index;
+		    est = n;
+		}
+		index = index + 1;
+	    }
+	}
+	return min;
     }
 		
 	
@@ -288,11 +308,7 @@ public class MyLinkedListImproved<T extends Comparable> implements Iterable<T>{
     	// System.out.println(l.toString());
     	// l.remove(12);
     	// System.out.println(l.toString());
-
-	for(Integer n : l){
-	    System.out.println(n.toString());
-	}
-	
+	System.out.println(l.min());
     }
 
     // public static void main(String args[]){
