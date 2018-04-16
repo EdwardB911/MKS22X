@@ -16,19 +16,28 @@ public class Sort{
 		pos.add(n);
 	    }
 	}
-	System.out.println(neg.toString());
-	System.out.println(pos.toString());
+	// System.out.println(neg.toString());
+	// System.out.println(pos.toString());
 	hsort(neg);
 	hsort(pos);
-	System.out.println(neg.toString());
-	System.out.println(pos.toString());
+	// System.out.println(neg.toString());
+	// System.out.println(pos.toString());
+	MyLinkedListImproved<Integer> origin = new MyLinkedListImproved<Integer>();
+	for(Integer n : neg){
+	    origin.add(0, n * -1);
+	}
+	origin.extend(pos);
+	data.clear();
+	data.extend(origin);
 
     }
 
     public static void hsort(MyLinkedListImproved<Integer> data){
 	Integer a = data.max();
+	// System.out.println("max" + a);
 	int times = (int)(Math.log(a)/Math.log(10));
 	times = times + 1;
+	// System.out.println("times" + times);
 	for(int x = 1; x <= times; x++){
 	    MyLinkedListImproved<Integer>[] buckets = new MyLinkedListImproved[10];
 	    for(int y = 0; y < 10; y++){
@@ -41,16 +50,20 @@ public class Sort{
 		}
 	    	int rem = n % pow;
 		int dig = rem / (pow / 10);
-		System.out.println(dig);
+		// System.out.println(dig);
 		buckets[dig].add(n);
+		// System.out.println(buckets[dig].toString());
 	    }
+	    // System.out.println(Arrays.toString(buckets));
 	    MyLinkedListImproved<Integer> c = new MyLinkedListImproved<Integer>();
 	    for(int y = 0; y < 10; y++){
-		c.extend(buckets[y]);
-		System.out.println(c.toString());
+		// System.out.println("buckets[y]" + buckets[y].toString());
+		c.extend(buckets[y]);		
+		// System.out.println("c" + c.toString());
 	    }
-	    data = c;
-	    System.out.println(data);
+	    data.clear();
+	    data.extend(c);
+	    // System.out.println(data);
 	}
     }
 	    
@@ -67,6 +80,7 @@ public class Sort{
 	l.add(-10);
 	System.out.println(l.toString());
 	radixsort(l);
+	System.out.println(l);
     }
 
 
