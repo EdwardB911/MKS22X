@@ -2,10 +2,13 @@ public class Calculator{
 
     public static double eval(String s){
 	String[] ary = s.split(" ");
+	LinkedList<Integer> l = new LinkedList<>;
 	for(String str : ary){
-	    System.out.println(str);
+	    char x = str.charAt(0);
+	    if(x.isDigit()){
+		l.push(str.
+		
 	}
-	return 2;
     }
 
     public static void main(String[] args){
