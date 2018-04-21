@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class MyDeque<E>{
 
     private E[] data;
@@ -30,17 +33,17 @@ public class MyDeque<E>{
 
     public String toString(){ 
  	String line = "["; 
- 	for(int x = front; x <= back; x++){ 
- 	    if(x == data.length){ 
- 		x = 0; 
- 	    } 
- 	    line += data[x] + ","; 
+ 	for(int x = front; (x % data.length) != (back + 1); x++){  	    
+ 	    line += data[x % data.length] + ","; 
  	} 
  	return line + "]"; 
     } 
 
 
     public void addFirst(E value){
+	if(value == null){
+	    throw new NullPointerException();
+	}
 	if (size == 0){
 	    data[0] = value;
 	    front = 0;
@@ -56,6 +59,18 @@ public class MyDeque<E>{
 	    front = front - 1;
 	}
 	size = size + 1;
+    }
+    
+    @SuppressWarnings("unchecked")
+    public static void main(String[] args){
+	MyDeque<Integer> a = new MyDeque();
+	a.addFirst(1);
+	a.addFirst(2);
+	a.addFirst(3);
+	System.out.println(a.front);
+	System.out.println(a.back);
+	System.out.println(Arrays.toString(a.data));
+	System.out.println(a);
     }
 	
 	    
