@@ -15,13 +15,17 @@ public class MyDeque<E>{
 
     @SuppressWarnings("unchecked")
     public MyDeque(int capacity){
-	if(capacity < 0){
+	if(capacity <= 0){
 	    throw new IllegalArgumentException() ;
 	}
 	data =(E[])new Object[capacity];
 	size = 0;
 	front = 0;
 	back = 0;
+    }
+
+    public int size(){
+	return size;
     }
 
 }
