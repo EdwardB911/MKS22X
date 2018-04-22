@@ -50,14 +50,20 @@ public class MyDeque<E>{
     private void resize(){
 	E[] next = (E[])new Object[(data.length * 2)];
 	int y = 0;
-	for(int x = front; (x % data.length) != (back + 1); x++){
-	    next[y] = data[x];
-	    System.out.println(data[x]);
-	    y = y + 1;
+	if (size == 1){
+	    next[0] = data[front];
+	}
+	else if(size > 1){		
+	    int x = front;
+		for(x = front; (x % data.length) != (back); x++){  	    
+		     next[y] = data[x % data.length];
+		     y = y + 1;
+		}
+	   next[y] = data[back];
 	}
 	data = next;
 	front = 0;
-	back = size();
+	back = size() - 1;
     }	
 
 
@@ -89,7 +95,7 @@ public class MyDeque<E>{
     public static void main(String[] args){
 	MyDeque<Integer> a = new MyDeque();
 	System.out.println(a);
-	for(int x = 0; x < 10; x++){
+	for(int x = 0; x < 12; x++){
 	    a.addFirst(x);
 	    System.out.println(a);
 	}
