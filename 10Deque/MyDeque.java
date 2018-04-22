@@ -132,9 +132,25 @@ public class MyDeque<E>{
 	}
 	
     }
-
     
-    
+    public E removeLast(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}
+	else{
+	    E moved = data[back];
+	    data[back] = null;
+	    if (back == 0){
+		front = data.length - 1;
+	    }
+	    else{
+		back = back - 1;
+	    }
+	    size = size - 1;
+	    return moved;
+	}
+	
+    }    
    
     public static void main(String[] args){
 	MyDeque<Integer> a = new MyDeque();
@@ -144,7 +160,7 @@ public class MyDeque<E>{
 	    System.out.println(a);
 	}
 	for(int x = 0; x < 14; x++){
-	    a.removeFirst();
+	    a.removeLast();
 	    System.out.println(a);
 	}
 
