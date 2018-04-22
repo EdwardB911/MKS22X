@@ -90,13 +90,61 @@ public class MyDeque<E>{
 	}
 	size = size + 1;
     }
+
+    public void addLast(E value){
+	if(value == null){
+	    throw new NullPointerException();
+	}
+	if(size == data.length){
+	    resize();
+	}
+	if (size == 0){
+	    data[0] = value;
+	    front = 0;
+	    back = 0;
+	}
+	else if(back == data.length - 1){
+	    data[0] = value;
+	    back = 0;
+	}
+	else{
+	    data[back + 1] = value;
+	    back = back + 1;
+	}
+	size = size + 1;
+    }
+
+    public E removeFirst(){
+	if(size == 0){
+	    throw new NoSuchElementException();
+	}
+	else{
+	    E moved = data[front];
+	    data[front] = null;
+	    if (front == data.length - 1){
+		front = 0;
+	    }
+	    else{
+		front = front + 1;
+	    }
+	    size = size - 1;
+	    return moved;
+	}
+	
+    }
+
+    
     
    
     public static void main(String[] args){
 	MyDeque<Integer> a = new MyDeque();
 	System.out.println(a);
 	for(int x = 0; x < 12; x++){
-	    a.addFirst(x);
+	    a.addLast(x);
+	    System.out.println(a);
+	}
+	for(int x = 0; x < 14; x++){
+	    a.removeFirst();
 	    System.out.println(a);
 	}
 
