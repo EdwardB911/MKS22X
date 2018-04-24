@@ -6,35 +6,23 @@ public class ExpressionTree{
   /*return the expression as an infix notation string with parenthesis*/
   /* The sample tree would be: "( 3 + (2 * 10))"     */
   public String toString(){
-      if(isValue()){
-	  return String.valueOf(getValue());
-      }
-      else{
-	  return "(" + getLeft().toString() + " " + getOp() + " " + getRight().toString() + ")";
-      }
+    /*you are to write this method*/
+    return "";
   }
   
   /*return the expression as a postfix notation string without parenthesis*/
   /* The sample tree would be: "3 2 10 * +"     */
   public String toStringPostfix(){
-      if(isValue()){
-	  return String.valueOf(getValue());
-      }
-      else{
-	  return getLeft().toStringPostfix() + " " + getRight().toStringPostfix() + " " + getOp();
-      }
+    /*you are to write this method*/
+    return "";
   }
   
   /*return the expression as a prefix notation string without parenthesis*/
   /* The sample tree would be: "+ 3 * 2 10"     */
   
   public String toStringPrefix(){
-      if(isValue()){
-	  return String.valueOf(getValue());
-      }
-      else{
-	  return getOp() + " " +  getLeft().toStringPrefix() + " " +  getRight().toStringPrefix();
-      }
+    /*you are to write this method*/
+    return "";
   }
   
   
@@ -42,37 +30,19 @@ public class ExpressionTree{
 
   /*return the value of the specified expression tree*/
   public double evaluate(){
-      if(isValue()){
-	  return getValue();
-      }
-      else{
-	  return apply(getOp(), getLeft().evaluate(), getRight().evaluate());
-      }
+    /*you are to write this method*/
+    return 0.0;
 
-  }
+    }
 
    
     
 
   /*use the correct operator on both a and b, and return that value*/
   private double apply(char op, double a, double b){
-      if(op == '+'){
-	  return a + b;
-      }
-      else if(op == '-'){
-	  return a - b;
-      }
-      else if(op == '*'){
-	  return a * b;
-      }
-      else if(op == '/'){
-	  return a / b;
-      }
-      else if(op == '%'){
-	  return a % b;
-      }
-      return 0.0;
-	      
+    /*you are to write this method*/
+    return 0.0;
+
     }
 
 
