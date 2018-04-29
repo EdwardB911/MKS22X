@@ -42,7 +42,11 @@ public class MyHeap{
     }
 
     public String toString(){
-	return Arrays.toString(data);
+	String str = "[";
+	for(int x = 0; x < size(); x++){
+	    str = str + data[x] + ", ";
+	}
+	return str + "]";	
     }
 
     public void add(String s){
@@ -73,10 +77,10 @@ public class MyHeap{
 	max.add("egg");
 	System.out.println(max);
 	MyHeap min = new MyHeap(false);
-	min.add("apple");
 	min.add("doughnut");
 	min.add("carrot");
 	min.add("egg");
+	min.add("apple");
 	System.out.println(min);
     }
 		    
