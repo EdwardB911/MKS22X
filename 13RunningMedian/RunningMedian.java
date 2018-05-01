@@ -36,6 +36,10 @@ public class RunningMedian{
 	}
     }
 
+    public int size(){
+	return bigs.size() + smalls.size();
+    }
+
     
 
 }
