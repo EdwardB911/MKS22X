@@ -122,7 +122,10 @@ public class MyHeap{
 	}
 	return str;
     }
-		
+
+    public String peek(){
+	return data[0];
+    }	
 	    
 			    
 	

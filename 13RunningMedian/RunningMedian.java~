@@ -1,0 +1,13 @@
+public class RunningMedian{
+
+    private MyHeap<Double> smalls;
+    private MyHeap<Double> bigs;
+
+    public RunningMedian(){
+	smalls = new MyHeap();
+	bigs = new MyHeap(false);
+    }
+
+    
+
+}

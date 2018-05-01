@@ -123,6 +123,10 @@ public class MyHeap<T extends Comparable<T>>{
 	}
 	return str;
     }
+
+    public T peek(){
+	return data[0];
+    }
 		
 	    
 			    
