@@ -40,6 +40,19 @@ public class RunningMedian{
 	return bigs.size() + smalls.size();
     }
 
-    
+    public Double getMedian(){
+	if (size() == 0){
+	    throw new NoSuchElementException();
+	}
+	if(smalls.size() == bigs.size()){
+	    return (smalls.peek() + bigs.peek())/2;
+	}
+	else if(smalls.size() > bigs.size()){
+	    return smalls.peek();
+	}
+	else{
+	    return bigs.peek();
+	}
+    }    
 
 }
