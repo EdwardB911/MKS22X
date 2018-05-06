@@ -1,3 +1,9 @@
+import java.util.*;
+import java.io.*;
+
+@SuppressWarnings("unchecked")
+
+
 public class Location{
 
     private int row,col;
