@@ -3,7 +3,7 @@ import java.io.*;
 
 @SuppressWarnings("unchecked")
 
-public class FrontierQueue{
+public class FrontierQueue implements Frontier{
 
     private LinkedList<Location> data;
 
@@ -15,8 +15,12 @@ public class FrontierQueue{
 	data.addFirst(l);
     }
 
-    public void remove(){
-	data.removeLast();
+    public Location next(){
+	return data.removeLast();
+    }
+
+    public boolean hasNext(){
+	return data.size() > 0;
     }
 
 }
