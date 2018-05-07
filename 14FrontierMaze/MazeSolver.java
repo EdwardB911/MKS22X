@@ -3,11 +3,13 @@ public class MazeSolver{
   private Frontier frontier;
 
   public MazeSolver(String mazeText){
-    
+      maze = new Maze(mazeText);      
   }
 
   //Default to BFS
-  public boolean solve(){ return solve(0); }
+  public boolean solve(){
+      return solve(0);
+  }
 
   //mode: required to allow for alternate solve modes.
   //0: BFS
@@ -20,7 +22,36 @@ public class MazeSolver{
     //  check if any locations are the end, if you found the end just return true!
     //  add all the locations to the frontier
     //when there are no more values in the frontier return false
-    return false;
+
+      if(mode == 0){
+	  frontier = new FrontierQueue();
+      }
+      else if(mode == 1){
+	  frontier = new FrontierStack();
+      }
+
+      frontier.add(maze.getStart());
+      while(frontier.hasNext()){
+	  Location L = frontier.next();
+	  if (L == maze.getEnd()){
+	      while (L.getPrevious() != null){
+		  Location N = L.getPrevious();
+		  maze.set(N.getRow(),N.getCol(), '@');
+	      }
+	      return true;
+	  }
+	  maze.set(L.getRow(), L.getCol(), '.');
+	  Location[] ary = maze.getNeighbors(L);
+	  for(Location X : ary){
+	      try{
+		  maze.set(X.getRow(),X.getCol(), '?');
+		  frontier.add(X);
+	      }
+	      catch(NullPointerException e){}
+	  }
+      }
+      
+      return false;
   }
 
   public String toString(){
