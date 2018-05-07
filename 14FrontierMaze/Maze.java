@@ -28,7 +28,7 @@ public class Maze{
 	ary[2] = new Location(L.getRow() + 1, L.getCol(), L);
     }
     if(L.getCol() + 1 < maze[0].length && (maze[L.getRow()][L.getCol() + 1] == ' ' || maze[L.getRow()][L.getCol() + 1] == 'E')){
-	ary[3] = new Location(L.getRow(), L.getCol() - 1, L);
+	ary[3] = new Location(L.getRow(), L.getCol() + 1, L);
     }
     return ary;
   }
