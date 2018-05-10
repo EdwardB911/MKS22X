@@ -25,6 +25,13 @@ public class Location implements Comparable<Location>{
 	distance = dist;
     }
 
+    public Location(Location l, int dist){
+	row = l.getRow();
+	col = l.getCol();
+	previous = l.getPrevious();
+	distance = dist;
+    }
+
     public int getRow(){
 	return row;
     }
