@@ -48,12 +48,15 @@ public class Maze{
 	}
 	if(L.getCol() - 1 >= 0 && (maze[L.getRow()][L.getCol() - 1] == ' ' || maze[L.getRow()][L.getCol() - 1] == 'E')){
 	    ary[1] = new Location(L.getRow(), L.getCol() - 1, L);
+	    ary[1] = new Location(ary[1], getDist(ary[1]));
 	}
 	if(L.getRow() + 1 < maze.length && (maze[L.getRow() + 1][L.getCol()] == ' ' || maze[L.getRow() + 1][L.getCol()] == 'E')){
 	    ary[2] = new Location(L.getRow() + 1, L.getCol(), L);
+	    ary[2] = new Location(ary[2], getDist(ary[2]));
 	}
 	if(L.getCol() + 1 < maze[0].length && (maze[L.getRow()][L.getCol() + 1] == ' ' || maze[L.getRow()][L.getCol() + 1] == 'E')){
 	    ary[3] = new Location(L.getRow(), L.getCol() + 1, L);
+	    ary[3] = new Location(ary[3], getDist(ary[3]));
 	}
 	return ary;
     }
@@ -134,6 +137,8 @@ public class Maze{
 	*/
 	end = new Location(endr,endc,null);
 	start = new Location(startr,startc,null);
+	end = new Location(end, getDist(end));
+	start = new Location(start, getDist(start));
     }
 
     public String toStringColor(){
