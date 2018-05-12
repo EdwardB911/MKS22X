@@ -135,7 +135,7 @@ public class USACO{
 		    }
 		}
 	    }
-	    System.out.println(toString(newNums));
+	    // System.out.println(toString(newNums));
 	}
 	return newNums[R2 -1][C2 -1];
     }
