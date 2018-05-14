@@ -8,8 +8,7 @@ public class Maze{
     private static final String SHOW_CURSOR =  "\033[?25h";
     Location start,end;
     private char[][]maze;
-
-
+    private boolean setAStar;
 
     /*
       YOU MUST COMPLETE THIS METHOD!!!
@@ -34,7 +33,11 @@ public class Maze{
     }
 
     public int getDist(Location l){
-	return ydist(l) + xdist(l);
+	int x =  ydist(l) + xdist(l);
+	if (setAStar){
+	    x = x + l.getDistanceSoFar();
+	}
+	return x;
     }
 	
 	    
@@ -139,6 +142,11 @@ public class Maze{
 	start = new Location(startr,startc,null);
 	end = new Location(end, getDist(end));
 	start = new Location(start, getDist(start));
+    }
+
+    public Maze (String FileName, boolean setAStar){
+	this(FileName);
+	setAStar = true;
     }
 
     public String toStringColor(){

@@ -12,6 +12,8 @@ public class Location implements Comparable<Location>{
 
     private int distance;
 
+    private int distanceSoFar;
+
     public Location(int x, int y, Location prev){
 	row = x;
 	col = y;
@@ -29,6 +31,12 @@ public class Location implements Comparable<Location>{
 	row = l.getRow();
 	col = l.getCol();
 	previous = l.getPrevious();
+	if(l.getPrevious() == null){
+	    distanceSoFar = 0;
+	}
+	else{
+	    distanceSoFar = l.getPrevious().getDistanceSoFar() + 1;
+	}
 	distance = dist;
     }
 
@@ -44,6 +52,10 @@ public class Location implements Comparable<Location>{
 	return distance;
     }
 
+    public int getDistanceSoFar(){
+	return distanceSoFar;
+    }
+
     public Location getPrevious(){
 	return previous;
     }
@@ -51,5 +63,6 @@ public class Location implements Comparable<Location>{
     public int compareTo(Location l){
 	return distance - l.getDistance();
     }
+
 
 }
