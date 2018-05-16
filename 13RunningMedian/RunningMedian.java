@@ -57,7 +57,7 @@ public class RunningMedian{
 
     public static void main(String[] args){
 	RunningMedian med = new RunningMedian();
-	Double[] a = {23.0, 33.0, 44.0, 27.0, 56.0, 48.0, 12.0, 59.0, 1.0, 39.0};
+	Double[] a = {23.0, 33.0, 44.0, 27.0, 56.0, 48.0, 12.0, 59.0, 1.0, 39.0, 99.0, 1.0};
 	for(int x = 0; x < 10; x++){
 	    med.add(a[x]);
 	}
