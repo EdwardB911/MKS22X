@@ -58,10 +58,10 @@ public class RunningMedians{
     public static void main(String[] args){
 	RunningMedian med = new RunningMedian();
 	Double[] a = new Double[45];
-	for(int x = 0; x < a.length; a++){
+	for(int x = 0; x < a.length; x++){
 	    a[x] = 36.0;
 	}
-	for(int x = 0; x < 10; x++){
+	for(int x = 0; x < 45; x++){
 	    med.add(a[x]);
 	}
 	System.out.println(med.getMedian());

@@ -1,3 +1,7 @@
+import java.util.*;
+import java.io.*;
+@SuppressWarnings("unchecked")
+
 public class RunningMedian{
 
     private MyHeap<Double> smalls;
@@ -8,6 +12,57 @@ public class RunningMedian{
 	bigs = new MyHeap(false);
     }
 
-    
+    public void add(Double d){
+	if(smalls.size() == 0 && bigs.size() == 0){
+	    smalls.add(d);
+	}
+	else if(smalls.size() == 0 && bigs.size() == 1){
+	    smalls.add(d);
+	}
+	else if(smalls.size() == 1 && bigs.size() == 0){
+	    bigs.add(d);
+	}
+	else if(d > smalls.peek()){
+	    bigs.add(d);
+	    if(bigs.size() - smalls.size() == 2){
+		smalls.add(bigs.remove());
+	    }
+	}
+	else{
+	    smalls.add(d);
+	    if(smalls.size() - bigs.size() == 2){
+		bigs.add(smalls.remove());
+	    }
+	}
+    }
+
+    public int size(){
+	return bigs.size() + smalls.size();
+    }
+
+    public Double getMedian(){
+	if (size() == 0){
+	    throw new NoSuchElementException();
+	}
+	if(smalls.size() == bigs.size()){
+	    return (smalls.peek() + bigs.peek())/2;
+	}
+	else if(smalls.size() > bigs.size()){
+	    return smalls.peek();
+	}
+	else{
+	    return bigs.peek();
+	}
+    }
+
+    public static void main(String[] args){
+	RunningMedian med = new RunningMedian();
+	Double[] a = {23.0, 33.0, 44.0, 27.0, 56.0, 48.0, 12.0, 59.0, 1.0, 39.0, 99.0, 1.0};
+	for(int x = 0; x < 10; x++){
+	    med.add(a[x]);
+	}
+	System.out.println(med.getMedian());
+    }
+	    
 
 }
