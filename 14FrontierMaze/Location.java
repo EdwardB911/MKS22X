@@ -53,7 +53,8 @@ public class Location implements Comparable<Location>{
     }
 
     public int getDistanceSoFar(){
-	return distanceSoFar;
+	// System.out.println(distanceSoFar);
+	return distanceSoFar;	
     }
 
     public Location getPrevious(){
