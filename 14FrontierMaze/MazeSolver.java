@@ -1,10 +1,13 @@
 public class MazeSolver{
     private Maze maze;
     private Frontier frontier;
+    private String text;    
 
     public MazeSolver(String mazeText){
-	maze = new Maze(mazeText);      
+	maze = new Maze(mazeText);
+	text = mazeText;
     }
+    
 
     //Default to BFS
     public boolean solve(){
@@ -30,6 +33,10 @@ public class MazeSolver{
 	    frontier = new FrontierStack();
 	}
 	else if(mode == 2){
+	    frontier = new FrontierPriorityQueue();
+	}
+	else if(mode == 3){
+	    maze = new Maze(text, true);
 	    frontier = new FrontierPriorityQueue();
 	}
 
@@ -68,7 +75,7 @@ public class MazeSolver{
     }
 
     public static void main(String[] args){
-	MazeSolver a = new MazeSolver("data2.dat");
-	a.solve(2);    
+	MazeSolver a = new MazeSolver("data3.dat");
+	a.solve(3);    
     }
 }

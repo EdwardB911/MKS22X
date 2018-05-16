@@ -144,9 +144,65 @@ public class Maze{
 	start = new Location(start, getDist(start));
     }
 
-    public Maze (String FileName, boolean setAStar){
-	this(FileName);
+    public Maze (String filename, boolean set){
 	setAStar = true;
+	ArrayList<char[]> lines = new ArrayList<char[]>();
+	int startr=-1, startc=-1;
+	int endr=-1,endc=-1;
+	try{
+	    Scanner in = new Scanner(new File(filename));
+	    while(in.hasNext()){
+		lines.add(in.nextLine().toCharArray());
+	    }
+	}catch(FileNotFoundException e){
+	    System.out.println("File not found: "+filename);
+	    System.exit(1);
+	}
+	maze = new char[lines.size()][];
+	for(int i = 0; i < maze.length; i++){
+	    maze[i]=lines.get(i);
+	}
+	for(int r=0; r<maze.length;r++){
+	    for(int c=0; c<maze[r].length;c++){
+		if(maze[r][c]=='S'){
+		    if(startr == -1){
+			startr=r;
+			startc=c;
+		    }else{
+			System.out.println("Multiple 'S' found!");
+			System.exit(0);
+		    }
+		}
+
+		if(maze[r][c]=='E'){
+		    //erase E
+		    //maze[r][c]=' ';
+		    if(endr == -1){
+			endr=r;
+			endc=c;
+		    }else{
+			System.out.println("Multiple 'E' found!");
+			System.exit(0);
+		    }
+		}
+	    }
+	}
+	if(startr == -1 || endr == -1){
+	    System.out.println("Missing 'S' or 'E' from maze.");
+	    System.exit(0);
+
+	}
+
+	/*
+	  THIS IS AN IMPORTANT PART BECAUSE YOU WILL NEED TO CHANGE IT LATER!
+	  The start/end Locations may need more information later when we add
+	  other kinds of frontiers!
+	*/
+	end = new Location(endr,endc,null);
+	start = new Location(startr,startc,null);
+	end = new Location(end, getDist(end));
+	start = new Location(start, getDist(start));
+	
     }
 
     public String toStringColor(){
