@@ -19,5 +19,9 @@ public class FrontierPriorityQueue implements Frontier{
     public boolean hasNext(){
 	return data.size() > 0;
     }
+
+    public String toString(){
+	return data.toString();
+    }
 }
     

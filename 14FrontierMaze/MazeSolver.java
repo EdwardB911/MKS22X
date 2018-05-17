@@ -69,8 +69,9 @@ public class MazeSolver{
 	    for(Location X : ary){
 		try{
 		    maze.set(X.getRow(),X.getCol(), '?');
-		    System.out.println(maze.toString());
+		    System.out.println(maze.toString());		    
 		    frontier.add(X);
+		    System.out.println(frontier);
 		}
 		catch(NullPointerException e){}
 	    }
