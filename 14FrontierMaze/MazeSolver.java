@@ -71,7 +71,7 @@ public class MazeSolver{
 		    maze.set(X.getRow(),X.getCol(), '?');
 		    System.out.println(maze.toString());		    
 		    frontier.add(X);
-		    System.out.println(frontier);
+		    // System.out.println(frontier);
 		}
 		catch(NullPointerException e){}
 	    }
