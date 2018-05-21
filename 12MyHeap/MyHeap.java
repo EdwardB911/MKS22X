@@ -1,20 +1,21 @@
 import java.util.*;
 import java.io.*;
 
-public class MyHeap{
+@SuppressWarnings("unchecked")
+public class MyHeap<T extends Comparable<T>>{
 
-    private String[] data;
+    private T[] data;
     private boolean isMax;
     private int size;
 
     public MyHeap(){
-	data = new String[10];
+	data = (T[])new Comparable[10];
 	isMax = true;
 	size = 0;
     }
 
     public MyHeap(boolean b){
-	data = new String[10];
+	data = (T[])new Comparable[10];
 	isMax = b;
 	size = 0;
     }
@@ -24,8 +25,8 @@ public class MyHeap{
     }
 
     private void resize(){
-	String[] ary = new String[data.length * 2];
-	for(int x = 0; x < ary.length; x++){ 
+	T[] ary = (T[])new Comparable[data.length * 2];
+	for(int x = 0; x < data.length; x++){ 
  	    ary[x] = data[x]; 
  	}
 	data = ary;
@@ -43,9 +44,9 @@ public class MyHeap{
     }
 
     private void swap(int a, int b){                       
-        String c = data[a];                                                          
+        T c = data[a];                                                          
         data[a] = data[b];
-	data[b] = c;                                                             
+	data[b] = c;	
     }
 
     public String toString(){
@@ -56,7 +57,7 @@ public class MyHeap{
 	return str + "]";	
     }
 
-    public void add(String s){
+    public void add(T s){
 	if(size == data.length){
 	    resize();
 	}
@@ -77,8 +78,8 @@ public class MyHeap{
     }
 
     // removes top element
-    public String remove(){
-	String str = data[0];
+    public T remove(){
+	T str = data[0];
 	swap(0, size - 1);
 	data[size - 1] = null;
 	size = size - 1;
@@ -123,16 +124,17 @@ public class MyHeap{
 	return str;
     }
 
-    public String peek(){
+    public T peek(){
 	return data[0];
-    }	
+    }
+		
 	    
 			    
 	
 	
 
     public static void main(String[] args){
-	MyHeap max = new MyHeap(true);
+	MyHeap<String> max = new MyHeap(true);
 	max.add("apple");
 	max.add("doughnut");
 	max.add("carrot");
@@ -140,7 +142,7 @@ public class MyHeap{
 	System.out.println(max);
 	max.remove();
 	System.out.println(max);
-	MyHeap min = new MyHeap(false);
+	MyHeap<String> min = new MyHeap(false);
 	min.add("doughnut");
 	min.add("carrot");
 	min.add("egg");
