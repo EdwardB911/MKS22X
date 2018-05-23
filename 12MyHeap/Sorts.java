@@ -34,6 +34,14 @@ public class Sorts{
 	}
     }
 
+    public static void heapsort(int[] ary){
+	for(int size = ary.length - 1; size >= 0){
+	    swap(ary, 0, size);
+	    int x = 0;
+	    while(x 
+	
+	
+
     public static void main(String[] args){
 	int[] ary;
 	ary = new int[10];
