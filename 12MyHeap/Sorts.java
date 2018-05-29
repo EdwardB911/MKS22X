@@ -35,10 +35,42 @@ public class Sorts{
     }
 
     public static void heapsort(int[] ary){
-	for(int size = ary.length - 1; size >= 0){
+	heapify(ary);
+	for(int size = ary.length - 1; size > 0; size--){
+	    // if (size == 2){
+	    // 	System.out.println(Arrays.toString(ary));
+	    // }
 	    swap(ary, 0, size);
 	    int x = 0;
-	    while(x 
+	    while(x < size){
+		int[] child = children(x);
+		int est = -1;
+		    if(child[0] >= size){
+			x = size;
+		    }
+		    else if(child[1] == size){
+			est = child[0];
+			if(ary[est] > ary[x]){
+			    swap(ary, x, est);
+			}
+		    }
+		    else{
+			if(ary[child[0]] > ary[child[1]]){
+			    est = child[0];
+			}
+			else{
+			    est = child[1];
+			}
+			if(ary[est] > ary[x]){
+			    swap(ary, x, est);
+			}
+		    }
+		    if(child[0] < size){
+		    	x = est;
+		    }
+	    }
+	}
+    }
 	
 	
 
@@ -48,7 +80,10 @@ public class Sorts{
 	for(int x = 0; x < ary.length; x++){
 	    ary[x] = (int)(Math.random() * 10);
 	}
+	System.out.println(Arrays.toString(ary));
 	heapify(ary);
+	System.out.println(Arrays.toString(ary));
+	heapsort(ary);
 	System.out.println(Arrays.toString(ary));
     }
 
