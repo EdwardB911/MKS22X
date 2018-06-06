@@ -47,29 +47,29 @@ public class MazeSolver{
 	    Location L = frontier.next();
 	    // if the location is the end indicate is as such
 	    if (L.getRow() == maze.getEnd().getRow() && L.getCol() == maze.getEnd().getCol()){
-		maze.set(L.getRow(),L.getCol(), 'E');
+		// maze.set(L.getRow(),L.getCol(), 'E');
 		// then trace the path from the end to the start
 		while (L.getPrevious() != null){
 		    Location N = L.getPrevious();
 		    maze.set(N.getRow(),N.getCol(), '@');
-		    System.out.println(maze.toString());
+		    // System.out.println(maze.toString());
 		    L = N;
 		}
 		// indicate the start
-		maze.set(maze.getStart().getRow(), maze.getStart().getCol(), 'S');
-		System.out.println(maze);
+		// maze.set(maze.getStart().getRow(), maze.getStart().getCol(), 'S');
+		// System.out.println(maze);
 		return true;
 	    }
 	    // if the location isn't the end try it out
 	    maze.set(L.getRow(), L.getCol(), '.');
-	    System.out.println(maze.toString());
+	    // System.out.println(maze.toString());
 	    // get its possible neighbors
 	    Location[] ary = maze.getNeighbors(L);
 	    // add the valid neighbors
 	    for(Location X : ary){
 		try{
 		    maze.set(X.getRow(),X.getCol(), '?');
-		    System.out.println(maze.toString());		    
+		    // System.out.println(maze.toString());		    
 		    frontier.add(X);
 		    // System.out.println(frontier);
 		}
